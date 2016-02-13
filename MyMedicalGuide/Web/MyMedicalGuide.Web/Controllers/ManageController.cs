@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyMedicalGuide.Web.Models;
+using MyMedicalGuide.Web.Models.Manage;
 
 namespace MyMedicalGuide.Web.Controllers
 {
