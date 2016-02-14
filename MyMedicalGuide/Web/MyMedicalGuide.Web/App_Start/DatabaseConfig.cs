@@ -1,5 +1,5 @@
-﻿using MeMedicalGuide.Data;
-using MeMedicalGuide.Data.Migrations;
+﻿using MyMedicalGuide.Data;
+using MyMedicalGuide.Data.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using MyMedicalGuide.Data.Common.Models;
+using System.Collections.Generic;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Doctor
+    public class Doctor : BaseModel<int>
     {
         private ICollection<Patient> patients;
 
@@ -17,13 +18,13 @@ namespace MyMedicalGuide.Data.Models
             this.customAppointments = new HashSet<CustomAppointment>();
         }
 
-        public int Id { get; set; }
-
         public string UserId { get; set; }
 
         public virtual User User { get; set; }
 
-        public string SpecializationArea { get; set; }
+        public int DepartmentId { get; set; }
+
+        public virtual Department Department { get; set; }
 
         public int HospitalId { get; set; }
 

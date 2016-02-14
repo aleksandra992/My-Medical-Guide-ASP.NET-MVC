@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MyMedicalGuide.Data.Common.Models;
+using System;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Appointment
+    public class Appointment : BaseModel<int>
     {
         public int Id { get; set; }
 

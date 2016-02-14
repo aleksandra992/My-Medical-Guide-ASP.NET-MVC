@@ -1,19 +1,22 @@
 ﻿namespace MyMedicalGuide.Data.Models
 {
+    using Common.Models;
     using System.Collections.Generic;
 
-    public class Hospital
+    public class Hospital : BaseModel<int>
     {
         private ICollection<Doctor> doctors;
 
         private ICollection<Patient> patients;
 
+        private ICollection<Department> departments;
+
         public Hospital()
         {
             this.doctors = new HashSet<Doctor>();
+            this.patients = new HashSet<Patient>();
+            this.departments = new HashSet<Department>():
         }
-
-        public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -40,6 +43,18 @@
             set
             {
                 this.patients = value;
+            }
+        }
+
+        public virtual ICollection<Department> Departments
+        {
+            get
+            {
+                return this.departments;
+            }
+            set
+            {
+                this.departments = value;
             }
         }
     }

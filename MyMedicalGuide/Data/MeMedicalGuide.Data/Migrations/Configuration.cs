@@ -1,11 +1,11 @@
-namespace MeMedicalGuide.Data.Migrations
+namespace MyMedicalGuide.Data.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<MeMedicalGuide.Data.MyMedicalGuideDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<MyMedicalGuideDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace MeMedicalGuide.Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(MeMedicalGuide.Data.MyMedicalGuideDbContext context)
+        protected override void Seed(MyMedicalGuideDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -12,7 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MyMedicalGuide.Web.Models;
 using MyMedicalGuide.Data.Models;
-using MeMedicalGuide.Data;
+using MyMedicalGuide.Data;
 
 namespace MyMedicalGuide.Web
 {

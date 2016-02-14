@@ -1,43 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Patient
+    public class Department
     {
-        private ICollection<Report> reports;
-
         private ICollection<Doctor> doctors;
-
         private ICollection<Hospital> hospitals;
 
-        public Patient()
+        public Department()
         {
-            this.reports = new HashSet<Report>();
             this.doctors = new HashSet<Doctor>();
-            this.hospitals = new HashSet<Hospital>();
         }
 
         public int Id { get; set; }
 
-        public string UserId { get; set; }
-
-        public User User { get; set; }
-
-        public string Avatar { get; set; }
-
-        public string SSN { get; set; }
-
-        public virtual ICollection<Report> Reports
-        {
-            get
-            {
-                return this.reports;
-            }
-            set
-            {
-                this.reports = value;
-            }
-        }
+        public string Name { get; set; }
 
         public virtual ICollection<Doctor> Doctors
         {

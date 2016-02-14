@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using MyMedicalGuide.Web.Models;
 using MyMedicalGuide.Data.Models;
-using MeMedicalGuide.Data;
+using MyMedicalGuide.Data;
 
 namespace MyMedicalGuide.Web
 {

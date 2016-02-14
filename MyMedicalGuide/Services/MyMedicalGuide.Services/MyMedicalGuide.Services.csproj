@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Contracts\IPatientService.cs" />
+    <Compile Include="PatientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,20 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\MeMedicalGuide.Data\MyMedicalGuide.Data.csproj">
+      <Project>{472733cf-8df4-457d-984c-e0ac14361772}</Project>
+      <Name>MyMedicalGuide.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MyMedicalGuide.Data.Common\MyMedicalGuide.Data.Common.csproj">
+      <Project>{30049262-c495-4b56-b283-685555b8eaa8}</Project>
+      <Name>MyMedicalGuide.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MyMedicalGuide.Data.Models\MyMedicalGuide.Data.Models.csproj">
+      <Project>{df236a37-9313-4a3f-bbae-0d70418572c3}</Project>
+      <Name>MyMedicalGuide.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

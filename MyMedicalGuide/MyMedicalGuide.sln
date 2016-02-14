@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F16768B4-00DA-45F4-BB1B-E4F6C02DD092}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1B465818-5539-40EF-940B-CDB83453E8B5}"
+	ProjectSection(SolutionItems) = preProject
+		Data\MyMedicalGuide.Data.Models\User.cs = Data\MyMedicalGuide.Data.Models\User.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F65365F3-51E2-4566-BBAC-683ADE8992CE}"
 EndProject
@@ -20,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMedicalGuide.Web.Infrastructure", "Web\MyMedicalGuide.Web.Infrastructure\MyMedicalGuide.Web.Infrastructure.csproj", "{94D23538-2BA7-4FC5-9771-03FF408CBCA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMedicalGuide.Web.Models", "Web\MyMedicalGuide.Web.Models\MyMedicalGuide.Web.Models.csproj", "{388C6D67-999E-4AD2-8B16-E67AC24AA16E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMedicalGuide.Data.Common", "Data\MyMedicalGuide.Data.Common\MyMedicalGuide.Data.Common.csproj", "{30049262-C495-4B56-B283-685555B8EAA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +56,10 @@ Global
 		{388C6D67-999E-4AD2-8B16-E67AC24AA16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{388C6D67-999E-4AD2-8B16-E67AC24AA16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{388C6D67-999E-4AD2-8B16-E67AC24AA16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30049262-C495-4B56-B283-685555B8EAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30049262-C495-4B56-B283-685555B8EAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30049262-C495-4B56-B283-685555B8EAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30049262-C495-4B56-B283-685555B8EAA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +71,6 @@ Global
 		{448B8041-1576-45BC-BD1E-6B45669131A5} = {F65365F3-51E2-4566-BBAC-683ADE8992CE}
 		{94D23538-2BA7-4FC5-9771-03FF408CBCA0} = {F65365F3-51E2-4566-BBAC-683ADE8992CE}
 		{388C6D67-999E-4AD2-8B16-E67AC24AA16E} = {F65365F3-51E2-4566-BBAC-683ADE8992CE}
+		{30049262-C495-4B56-B283-685555B8EAA8} = {F16768B4-00DA-45F4-BB1B-E4F6C02DD092}
 	EndGlobalSection
 EndGlobal

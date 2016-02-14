@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-namespace MeMedicalGuide.Data
+namespace MyMedicalGuide.Data
 {
     public interface IMyMedicalGuideDbContext
     {
