@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Appointment.cs" />
     <Compile Include="CustomAppointment.cs" />
+    <Compile Include="Department.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="Hospital.cs" />
     <Compile Include="Patient.cs" />

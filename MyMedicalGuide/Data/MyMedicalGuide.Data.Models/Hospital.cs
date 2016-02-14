@@ -3,7 +3,7 @@
     using Common.Models;
     using System.Collections.Generic;
 
-    public class Hospital : BaseModel<int>
+    public class Hospital
     {
         private ICollection<Doctor> doctors;
 
@@ -15,8 +15,10 @@
         {
             this.doctors = new HashSet<Doctor>();
             this.patients = new HashSet<Patient>();
-            this.departments = new HashSet<Department>():
+            this.departments = new HashSet<Department>();
         }
+
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

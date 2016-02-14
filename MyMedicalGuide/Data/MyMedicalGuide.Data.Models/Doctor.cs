@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Doctor : BaseModel<int>
+    public class Doctor
     {
         private ICollection<Patient> patients;
 
@@ -17,6 +17,8 @@ namespace MyMedicalGuide.Data.Models
             this.appointments = new HashSet<Appointment>();
             this.customAppointments = new HashSet<CustomAppointment>();
         }
+
+        public int Id { get; set; }
 
         public string UserId { get; set; }
 

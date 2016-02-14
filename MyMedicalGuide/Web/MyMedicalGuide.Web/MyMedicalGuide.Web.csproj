@@ -213,6 +213,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
+    <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
+    <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,6 +237,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\AdminHospital\Views\web.config" />
+    <Content Include="Areas\Doctor\Views\web.config" />
+    <Content Include="Areas\Patient\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -283,6 +291,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminHospital\Controllers\" />
+    <Folder Include="Areas\AdminHospital\Models\" />
+    <Folder Include="Areas\AdminHospital\Views\Shared\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Doctor\Controllers\" />
+    <Folder Include="Areas\Doctor\Models\" />
+    <Folder Include="Areas\Doctor\Views\Shared\" />
+    <Folder Include="Areas\Patient\Controllers\" />
+    <Folder Include="Areas\Patient\Models\" />
+    <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,13 +15,15 @@
         public virtual IDbSet<Doctor> Doctors { get; set; }
 
         public virtual IDbSet<Patient> Patients { get; set; }
-        
+
 
         public virtual IDbSet<Appointment> Appointments { get; set; }
 
         public virtual IDbSet<CustomAppointment> CustomAppointments { get; set; }
 
         public virtual IDbSet<Report> Reports { get; set; }
+
+        public virtual IDbSet<Department> Departments { get; set; }
 
         public static MyMedicalGuideDbContext Create()
         {

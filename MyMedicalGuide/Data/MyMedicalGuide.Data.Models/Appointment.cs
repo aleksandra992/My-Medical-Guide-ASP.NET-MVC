@@ -3,7 +3,7 @@ using System;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Appointment : BaseModel<int>
+    public class Appointment 
     {
         public int Id { get; set; }
 
