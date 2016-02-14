@@ -68,16 +68,16 @@ namespace MyMedicalGuide.Data.Migrations
             {
                 var departmentsPart1 = new List<Department>()
                 {
-                    new Department() {Name = "CardioSurgery"},
-                    new Department() { Name = "Urology" },
-                    new Department() { Name = "Cardiology" },
+                    new Department() {Name = "CardioSurgery",Picture="../Content/Departments/1.jpg"},
+                    new Department() { Name = "Urology",Picture="../Content/Departments/2.jpg" },
+                    new Department() { Name = "Cardiology",Picture="../Content/Departments/3.jpg" },
 
                 };
                 var departmentsPart2 = new List<Department>()
                 {
-                      new Department() { Name = "Neurology"},
-                    new Department() { Name = "Nuclear Medicine" },
-                    new Department() { Name = "Pediatrics" }
+                      new Department() { Name = "Neurology",Picture="../Content/Departments/4.jpg"},
+                    new Department() { Name = "Nuclear Medicine",Picture="../Content/Departments/5.jpg" },
+                    new Department() { Name = "Pediatrics",Picture="../Content/Departments/6.jpg" }
                 };
 
                 context.Departments.AddOrUpdate(departmentsPart1.ToArray());

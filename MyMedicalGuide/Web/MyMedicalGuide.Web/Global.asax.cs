@@ -1,7 +1,9 @@
 ﻿namespace MyMedicalGuide.Web
 {
+    using Infrastructure.Mapping;
     using MyMedicalGuide.Web.App_Start;
-    using MyMedicalGuide.Web.Infrastructure.Mapping;
+    using System;
+    using System.Linq;
     using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -22,7 +24,7 @@
 
 
             var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
+            autoMapperConfig.Execute(Assembly.Load(AssemblyConst.WebModels));
         }
     }
 }

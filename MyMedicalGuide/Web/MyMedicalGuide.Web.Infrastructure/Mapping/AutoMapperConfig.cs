@@ -24,6 +24,7 @@
 
         private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
         {
+
             var maps = (from t in types
                         from i in t.GetInterfaces()
                         where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&

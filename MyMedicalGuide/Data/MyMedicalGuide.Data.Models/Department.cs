@@ -20,6 +20,8 @@ namespace MyMedicalGuide.Data.Models
 
         public string Name { get; set; }
 
+        public string Picture { get; set; }
+
         public virtual ICollection<Doctor> Doctors
         {
             get
