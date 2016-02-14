@@ -16,7 +16,6 @@
 
         public virtual IDbSet<Patient> Patients { get; set; }
 
-
         public virtual IDbSet<Appointment> Appointments { get; set; }
 
         public virtual IDbSet<CustomAppointment> CustomAppointments { get; set; }

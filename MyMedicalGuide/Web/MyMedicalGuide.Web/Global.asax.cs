@@ -1,5 +1,6 @@
 ﻿namespace MyMedicalGuide.Web
 {
+    using Infrastructure.Constants;
     using Infrastructure.Mapping;
     using MyMedicalGuide.Web.App_Start;
     using System;
