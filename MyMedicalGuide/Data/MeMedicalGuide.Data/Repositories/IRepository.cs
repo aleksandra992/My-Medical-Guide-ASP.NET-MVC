@@ -3,7 +3,9 @@
     using System;
     using System.Linq;
 
-    public interface IRepository<T> : IDisposable where T : class
+    using MyMedicalGuide.Data.Common.Models;
+
+    public interface IRepository<T, TKey> : IDisposable where T : BaseModel<TKey>
     {
         IQueryable<T> All();
 

@@ -1,21 +1,30 @@
-﻿using System;
+﻿using MyMedicalGuide.Data.Common.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Report
+    public class Report : BaseModel<int>
     {
-        [Key, ForeignKey("Appointment")]
-        public int AppointmentId { get; set; }
+        [ForeignKey("Appointment")]
+        public override int Id
+        {
+            get
+            {
+                return base.Id;
+            }
+            set
+            {
+                base.Id = value;
+            }
+        }
 
         public string HistoryOfIlness { get; set; }
 
         public string Medications { get; set; }
 
         public string Summary { get; set; }
-
-        public DateTime CreatedOn { get; set; }
 
         public virtual Appointment Appointment { get; set; }
 

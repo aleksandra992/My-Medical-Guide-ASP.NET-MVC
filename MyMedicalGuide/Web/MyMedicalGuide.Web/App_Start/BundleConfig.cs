@@ -19,8 +19,6 @@ namespace MyMedicalGuide.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-         
-
             bundles.Add(new ScriptBundle("~/bundles/home").Include(
                 "~/Scripts/home.js"
                 ));

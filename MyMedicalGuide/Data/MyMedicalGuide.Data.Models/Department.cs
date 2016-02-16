@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMedicalGuide.Data.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Department
+    public class Department : BaseModel<int>
     {
         private ICollection<Doctor> doctors;
         private ICollection<Hospital> hospitals;
@@ -15,8 +16,6 @@ namespace MyMedicalGuide.Data.Models
         {
             this.doctors = new HashSet<Doctor>();
         }
-
-        public int Id { get; set; }
 
         public string Name { get; set; }
 

@@ -167,7 +167,7 @@ namespace MyMedicalGuide.Web.Controllers
                 var userId = user.Id;
                 var patient = new Patient
                 {
-                    UserId = userId,
+                    User = user,
                     Avatar = model.Avatar,
                     SSN = model.SSN
                 };

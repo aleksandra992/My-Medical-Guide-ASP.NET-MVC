@@ -4,6 +4,6 @@ namespace MyMedicalGuide.Services.Contracts
 {
     public interface IPatientService
     {
-        int Add(Patient patient);
+        string Add(Patient patient);
     }
 }

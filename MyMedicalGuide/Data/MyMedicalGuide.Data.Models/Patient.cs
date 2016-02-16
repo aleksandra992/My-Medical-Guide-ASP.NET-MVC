@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MyMedicalGuide.Data.Common.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Patient
+    public class Patient : BaseModel<string>
     {
         private ICollection<Report> reports;
 
@@ -16,10 +18,19 @@ namespace MyMedicalGuide.Data.Models
             this.doctors = new HashSet<Doctor>();
             this.hospitals = new HashSet<Hospital>();
         }
+        [ForeignKey("User")]
+        public override string Id
+        {
+            get
+            {
+                return base.Id;
+            }
 
-        public int Id { get; set; }
-
-        public string UserId { get; set; }
+            set
+            {
+                base.Id = value;
+            }
+        }
 
         public User User { get; set; }
 

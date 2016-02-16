@@ -59,8 +59,8 @@ namespace MyMedicalGuide.Web.App_Start
             var servicesAssembly = Assembly.GetAssembly(typeof(IPatientService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
-            builder.RegisterGeneric(typeof(EfGenericRepository<>))
-                .As(typeof(IRepository<>))
+            builder.RegisterGeneric(typeof(EfGenericRepository<,>))
+                .As(typeof(IRepository<,>))
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

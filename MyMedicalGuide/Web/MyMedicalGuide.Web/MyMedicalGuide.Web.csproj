@@ -219,6 +219,7 @@
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -288,7 +289,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Departments.cshtml" />
+    <Content Include="Views\Departments\All.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DepartmentViewModel.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +322,10 @@
       <Project>{472733cf-8df4-457d-984c-e0ac14361772}</Project>
       <Name>MyMedicalGuide.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Data\MyMedicalGuide.Data.Common\MyMedicalGuide.Data.Common.csproj">
+      <Project>{30049262-c495-4b56-b283-685555b8eaa8}</Project>
+      <Name>MyMedicalGuide.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\MyMedicalGuide.Data.Models\MyMedicalGuide.Data.Models.csproj">
       <Project>{df236a37-9313-4a3f-bbae-0d70418572c3}</Project>
       <Name>MyMedicalGuide.Data.Models</Name>
@@ -335,11 +342,6 @@
       <Project>{388c6d67-999e-4ad2-8b16-e67ac24aa16e}</Project>
       <Name>MyMedicalGuide.Web.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

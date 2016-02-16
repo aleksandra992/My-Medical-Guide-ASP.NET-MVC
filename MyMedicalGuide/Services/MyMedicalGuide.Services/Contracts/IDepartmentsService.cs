@@ -7,5 +7,7 @@ namespace MyMedicalGuide.Services.Contracts
     public interface IDepartmentsService
     {
         IQueryable<Department> GetAll();
+
+        Department GetById(int id);
     }
 }

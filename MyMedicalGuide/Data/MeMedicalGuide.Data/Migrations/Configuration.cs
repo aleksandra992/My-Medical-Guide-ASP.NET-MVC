@@ -1,12 +1,16 @@
 namespace MyMedicalGuide.Data.Migrations
 {
+    using System;
+    using System.Collections;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
+    using System.Data.Entity.Core;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
 
     public sealed class Configuration : DbMigrationsConfiguration<MyMedicalGuideDbContext>
@@ -19,22 +23,12 @@ namespace MyMedicalGuide.Data.Migrations
 
         protected override void Seed(MyMedicalGuideDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-
-            SeedRoles(context);
-            SeedAdmin(context);
-            SeedDepartmentsHospitalsDoctors(context);
+            this.SeedRoles(context);
+            this.SeedAdmin(context);
+            var patients = this.SeedPatients(context);
+            var departments = this.SeedDepartments(context);
+            var doctors = this.SeedDoctors((IList<Department>)departments, context);
+            var hospitals = this.SeedHospitals(patients, doctors, departments, context); ;
         }
 
         private void SeedRoles(MyMedicalGuideDbContext context)
@@ -61,65 +55,36 @@ namespace MyMedicalGuide.Data.Migrations
             }
         }
 
-        internal static void SeedDepartmentsHospitalsDoctors(MyMedicalGuideDbContext context)
+        private void SeedAdmin(MyMedicalGuideDbContext context)
         {
-            var userManager = new UserManager<User>(new UserStore<User>(context));
-            if (!context.Departments.Any())
+            var passHasher = new PasswordHasher();
+            if (!context.Users.Any())
             {
-                var departmentsPart1 = new List<Department>()
-                {
-                    new Department() {Name = "CardioSurgery",Picture="../Content/Departments/1.jpg",Description="Cardiothoracic surgery is the field of medicine involved in surgical treatment of organs inside the thorax (the chest)—generally treatment of conditions of the heart (heart disease) and lungs (lung disease)."},
-                    new Department() { Name = "Urology",Picture="../Content/Departments/2.jpg",Description="Urology, also known as genitourinary surgery, is the branch of medicine that focuses on surgical and medical diseases of the male and female urinary tract system and the male reproductive organs." },
-                    new Department() { Name = "Cardiology",Picture="../Content/Departments/3.jpg",Description="Cardiologists are doctors who specialize in diagnosing and treating diseases or conditions of the heart and blood vessels—the cardiovascular system. You might also visit a cardiologist so you can learn about your risk factors for heart disease and find out what measures you can take for better heart health." },
 
-                };
-                var departmentsPart2 = new List<Department>()
+                var userManager = new UserManager<User>(new UserStore<User>(context));
+                var adminAleksandra = new User()
                 {
-                      new Department() { Name = "Neurology", Picture="../Content/Departments/4.jpg",Description="A neurologist is a doctor who specializes in treating diseases of the nervous system. The nervous system comprises the central and peripheral nervous system. This complex system involves the spinal cord and the brain."},
-                    new Department() { Name = "Nuclear Medicine",Picture="../Content/Departments/5.jpg",Description="Nuclear medicine is a branch of medical imaging that uses small amounts of radioactive material to diagnose and determine the severity of or treat a variety of diseases, including many types of cancers, heart disease, gastrointestinal, endocrine, neurological disorders and other abnormalities within the body." },
-                    new Department() { Name = "Pediatrics",Picture="../Content/Departments/6.jpg",Description="Pediatrics (also spelled paediatrics or p?diatrics) is the branch of medicine that deals with the medical care of infants, children, and adolescents, and the age limit usually ranges from birth up to 18 years of age (in some places until completion of secondary education, and until age 21 in the United States).[citation needed] A medical practitioner who specializes in this area is known as a pediatrician, or paediatrician." }
+                    Email = "admin@admin.com",
+                    UserName = "admin",
+                    FirstName = "admin",
+                    LastName = "admin",
+                    PasswordHash = passHasher.HashPassword("admin")
                 };
 
-                context.Departments.AddOrUpdate(departmentsPart1.ToArray());
-                context.Departments.AddOrUpdate(departmentsPart2.ToArray());
-                var hospitals = new List<Hospital>()
-                {
-                    new Hospital()
-                    {
-                        Name = "Tokuda",
-                        Address = "Cherni vryh",
-                        Departments = departmentsPart1,
-                    },
-                    new Hospital()
-                    {
-                        Name="Sveta Ana",
-                        Address="Bogatisa",
-                        Departments=departmentsPart2
-                    }
-                };
+                userManager.Create(adminAleksandra);
+                userManager.AddToRole(adminAleksandra.Id, "Admin");
+                context.SaveChanges();
+            }
+        }
 
-                context.Hospitals.AddOrUpdate(hospitals.ToArray());
-                var passhasher = new PasswordHasher();
-                var user = new User()
-                {
-                    Email = "rusev@yahoo.com",
-                    FirstName = "Petar",
-                    LastName = "Rusev",
-                    PhoneNumber = "00359897456123",
-                    UserName = "PRusev",
-                    PasswordHash = passhasher.HashPassword("PRusev")
-                };
-                userManager.Create(user);
-                userManager.AddToRole(user.Id, "Doctor");
-                var doctor = new Doctor()
-                {
-                    UserId = user.Id,
-                    DepartmentId = departmentsPart1[0].Id,
-                    Hospital = hospitals[0]
-                };
-                context.Doctors.Add(doctor);
-                context.Hospitals.AddOrUpdate(hospitals.ToArray());
+        private ICollection<Patient> SeedPatients(MyMedicalGuideDbContext context)
+        {
 
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var passhasher = new PasswordHasher();
+            var patients = new List<Patient>();
+            if (!context.Patients.Any())
+            {
                 var userGoran = new User()
                 {
                     FirstName = "Goran",
@@ -131,37 +96,145 @@ namespace MyMedicalGuide.Data.Migrations
                 };
                 userManager.Create(userGoran);
                 userManager.AddToRole(userGoran.Id, "User");
-                var pacient = new Patient()
-                {
-                    UserId = userGoran.Id,
-                    SSN = "1111111111",
-                };
-                pacient.Hospitals.Add(hospitals[0]);
-                pacient.Doctors.Add(doctor);
+
+                var pacient = new Patient() { User = userGoran, SSN = "1111111111", CreatedOn = DateTime.Now };
+
                 context.Patients.AddOrUpdate(pacient);
+                patients.Add(pacient);
                 context.SaveChanges();
+
             }
+            return patients;
         }
 
-        public void SeedAdmin(MyMedicalGuideDbContext context)
+        private ICollection<Department> SeedDepartments(MyMedicalGuideDbContext context)
         {
-            if (!context.Users.Any())
+            var departments = new List<Department>();
+            if (!context.Departments.Any())
             {
-
-                var userManager = new UserManager<User>(new UserStore<User>(context));
-                var adminAleksandra = new User()
+                var departmentsPart1 = new List<Department>()
                 {
-                    Email = "aleksandra@gmail.com",
-                    UserName = "aleksandra",
-                    FirstName = "Aleksandra",
-                    LastName = "Stojceva",
+                   new Department
+                   {
+                       Name = "CardioSurgery",
+                       Picture = "../Content/Departments/1.jpg",
+                       Description = "Cardiothoracic surgery is the"
+                                     + " field of medicine involved in "
+                                     + "surgical treatment of organs inside "
+                                     + "the thorax (the chest)—generally treatment "
+                                     + "of conditions of the heart (heart disease) and lungs (lung disease).",
+                       CreatedOn=DateTime.Now
+                   },
+
+                    new Department
+                    {
+                        Name = "Urology",
+                        Picture = "../Content/Departments/2.jpg",
+                        Description = "Urology, also known as genitourinary surgery,"
+                                      + " is the branch of medicine that focuses on"
+                                      + " surgical and medical diseases of the male "
+                                      + "and female urinary tract system and the male reproductive organs.",
+                        CreatedOn =DateTime.Now
+                    },
+
+                    new Department
+                    {
+                        Name = "Cardiology",
+                        Picture = "../Content/Departments/3.jpg",
+                        Description = "Cardiologists are doctors"
+                                      + " who specialize in diagnosing and treating"
+                                      + " diseases or conditions of the heart and blood "
+                                      + "vessels—the cardiovascular system. You might also"
+                                      + " visit a cardiologist so you can learn about your risk"
+                                      + " factors for heart disease and find out what measures you"
+                                      + " can take for better heart health.",
+                        CreatedOn=DateTime.Now
+                    }
                 };
 
-                userManager.Create(adminAleksandra, "123456");
-                userManager.AddToRole(adminAleksandra.Id, "Admin");
+                var departmentsPart2 = new List<Department>()
+                {
+                      new Department() { Name = "Neurology",CreatedOn = DateTime.Now,Picture="../Content/Departments/4.jpg",Description="A neurologist is a doctor who specializes in treating diseases of the nervous system. The nervous system comprises the central and peripheral nervous system. This complex system involves the spinal cord and the brain."},
+                    new Department() { Name = "Nuclear Medicine",CreatedOn = DateTime.Now,Picture="../Content/Departments/5.jpg",Description="Nuclear medicine is a branch of medical imaging that uses small amounts of radioactive material to diagnose and determine the severity of or treat a variety of diseases, including many types of cancers, heart disease, gastrointestinal, endocrine, neurological disorders and other abnormalities within the body." },
+                    new Department() { Name = "Pediatrics",CreatedOn = DateTime.Now,Picture="../Content/Departments/6.jpg",Description="Pediatrics (also spelled paediatrics or p?diatrics) is the branch of medicine that deals with the medical care of infants, children, and adolescents, and the age limit usually ranges from birth up to 18 years of age (in some places until completion of secondary education, and until age 21 in the United States).[citation needed] A medical practitioner who specializes in this area is known as a pediatrician, or paediatrician." }
+                };
 
+                context.Departments.AddOrUpdate(departmentsPart1.ToArray());
+                context.Departments.AddOrUpdate(departmentsPart2.ToArray());
+                context.SaveChanges();
+                departments.AddRange(departmentsPart1);
+                departments.AddRange(departmentsPart2);
+            }
+
+            return departments;
+        }
+
+        private ICollection<Doctor> SeedDoctors(IList<Department> departments, MyMedicalGuideDbContext context)
+        {
+
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var passhasher = new PasswordHasher();
+            var doctors = new List<Doctor>();
+            if (!context.Doctors.Any())
+            {
+                var userDoctor = new User()
+                {
+                    Email = "rusev@yahoo.com",
+                    FirstName = "Petar",
+                    LastName = "Rusev",
+                    PhoneNumber = "00359897456123",
+                    UserName = "PRusev"
+                };
+
+                userManager.Create(userDoctor, "PRusev");
+
+                userManager.AddToRole(userDoctor.Id, "Doctor");
+                var doctor = new Doctor() { User = userDoctor, Department = departments[0], CreatedOn = DateTime.Now };
+                context.Doctors.Add(doctor);
+                context.SaveChanges();
+                doctors.Add(doctor);
+            }
+            return doctors;
+
+        }
+
+        private ICollection<Hospital> SeedHospitals(
+            ICollection<Patient> patients,
+            ICollection<Doctor> doctors,
+            ICollection<Department> departments,
+            MyMedicalGuideDbContext context)
+        {
+
+
+            var hospitals = new List<Hospital>()
+                                    {
+                                        new Hospital()
+                                            {
+                                                Name = "Tokuda",
+                                                Address = "Cherni vryh",
+                                                Patients = patients,
+                                                Doctors = doctors,
+                                                Departments = departments,
+                                                CreatedOn = DateTime.Now
+                                            },
+                                        new Hospital()
+                                            {
+                                                Name = "Sveta Ana",
+                                                Address = "Bogatisa",
+                                                CreatedOn = DateTime.Now
+                                            }
+                                    };
+            if (!context.Hospitals.Any())
+            {
+                context.Hospitals.AddOrUpdate(hospitals.ToArray());
                 context.SaveChanges();
             }
+            return hospitals;
         }
+
+
+
+
+
     }
 }

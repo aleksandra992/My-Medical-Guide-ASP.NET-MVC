@@ -7,9 +7,9 @@
 
     public class DepartmentsService : IDepartmentsService
     {
-        private readonly IRepository<Department> departments;
+        private readonly IRepository<Department, int> departments;
 
-        public DepartmentsService(IRepository<Department> departments)
+        public DepartmentsService(IRepository<Department, int> departments)
         {
             this.departments = departments;
         }
@@ -17,6 +17,11 @@
         public IQueryable<Department> GetAll()
         {
             return this.departments.All();
+        }
+
+        public Department GetById(int id)
+        {
+            return this.departments.GetById(id);
         }
     }
 }

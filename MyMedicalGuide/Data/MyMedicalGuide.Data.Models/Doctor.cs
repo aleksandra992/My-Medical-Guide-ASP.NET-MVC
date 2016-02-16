@@ -1,9 +1,10 @@
 ﻿using MyMedicalGuide.Data.Common.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyMedicalGuide.Data.Models
 {
-    public class Doctor
+    public class Doctor : BaseModel<string>
     {
         private ICollection<Patient> patients;
 
@@ -18,17 +19,25 @@ namespace MyMedicalGuide.Data.Models
             this.customAppointments = new HashSet<CustomAppointment>();
         }
 
-        public int Id { get; set; }
+        [ForeignKey("User")]
+        public override string Id
+        {
+            get
+            {
+                return base.Id;
+            }
 
-        public string UserId { get; set; }
+            set
+            {
+                base.Id = value;
+            }
+        }
 
         public virtual User User { get; set; }
 
         public int DepartmentId { get; set; }
 
         public virtual Department Department { get; set; }
-
-        public int HospitalId { get; set; }
 
         public virtual Hospital Hospital { get; set; }
 

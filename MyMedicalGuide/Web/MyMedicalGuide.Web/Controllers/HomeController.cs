@@ -10,13 +10,6 @@ namespace MyMedicalGuide.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IDepartmentsService departmentsService;
-
-        public HomeController(IDepartmentsService service)
-        {
-            this.departmentsService = service;
-        }
-
         public ActionResult Index()
         {
             return View();
@@ -34,18 +27,6 @@ namespace MyMedicalGuide.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public ActionResult Departments()
-        {
-            //    var departments = departmentsService.GetAll().Select(x => new DepartmentViewModel()
-            //    {
-            //        Name = x.Name,
-            //        Picture = x.Picture
-            //    }).ToList();
-            var departments = departmentsService.GetAll();
-            var viewModelDepartments = this.Mapper.Map<IEnumerable<DepartmentViewModel>>(departments);
-            return View(viewModelDepartments);
         }
     }
 }

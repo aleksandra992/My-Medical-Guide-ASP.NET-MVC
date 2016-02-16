@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace MyMedicalGuide.Data.Repositories
 {
-    public class EfGenericRepository<T> : IRepository<T> where T : class
+    using MyMedicalGuide.Data.Common.Models;
+
+    public class EfGenericRepository<T, TKey> : IRepository<T, TKey> where T : BaseModel<TKey>
     {
         public EfGenericRepository(IMyMedicalGuideDbContext context)
         {

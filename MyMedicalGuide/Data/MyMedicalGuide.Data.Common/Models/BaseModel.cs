@@ -11,7 +11,7 @@ namespace MyMedicalGuide.Data.Common.Models
     public abstract class BaseModel<TKey> : IAuditInfo, IDeletableEntity
     {
         [Key]
-        public TKey Id { get; set; }
+        public virtual TKey Id { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

@@ -7,14 +7,14 @@ namespace MyMedicalGuide.Services
 {
     public class PatientService : IPatientService
     {
-        private readonly IRepository<Patient> patients;
+        private readonly IRepository<Patient, string> patients;
 
-        public PatientService(IRepository<Patient> patients)
+        public PatientService(IRepository<Patient, string> patients)
         {
             this.patients = patients;
         }
 
-        public int Add(Patient patient)
+        public string Add(Patient patient)
         {
             patients.Add(patient);
             patients.SaveChanges();

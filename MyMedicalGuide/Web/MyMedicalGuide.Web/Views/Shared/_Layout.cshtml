@@ -21,7 +21,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Departments", "Departments", "Home")</li>
+                    <li>@Html.ActionLink("Departments", "All", "Departments")</li>
 
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
@@ -48,6 +48,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/home");
     @RenderSection("scripts", required: false)
 
     <!-- Compiled and minified JavaScript -->
