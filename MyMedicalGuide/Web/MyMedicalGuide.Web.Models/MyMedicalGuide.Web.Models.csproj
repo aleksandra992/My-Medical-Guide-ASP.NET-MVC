@@ -101,6 +101,7 @@
     <Compile Include="Departments\DepartmentDetailsViewModel.cs" />
     <Compile Include="Departments\DepartmentViewModel.cs" />
     <Compile Include="Doctors\DoctorBasicViewModel.cs" />
+    <Compile Include="Hospitals\BasicHospitalViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />

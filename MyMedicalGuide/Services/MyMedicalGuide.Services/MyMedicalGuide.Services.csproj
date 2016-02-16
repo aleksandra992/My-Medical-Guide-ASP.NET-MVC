@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IDepartmentsService.cs" />
+    <Compile Include="Contracts\IHospitalsService.cs" />
     <Compile Include="Contracts\IPatientService.cs" />
     <Compile Include="DepartmentsService.cs" />
+    <Compile Include="HospitalsService.cs" />
     <Compile Include="PatientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

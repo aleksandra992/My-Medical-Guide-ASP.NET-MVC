@@ -11,6 +11,8 @@
 
         private ICollection<Department> departments;
 
+        public string Image { get; set; }
+
         public Hospital()
         {
             this.doctors = new HashSet<Doctor>();

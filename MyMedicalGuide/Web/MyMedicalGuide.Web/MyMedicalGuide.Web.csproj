@@ -217,10 +217,12 @@
     <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
+    <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -292,6 +294,10 @@
     <Content Include="Views\Departments\All.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DepartmentViewModel.cshtml" />
     <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BasicHospitalViewModel.cshtml" />
+    <Content Include="Views\Hospitals\All.cshtml" />
+    <Content Include="Views\Hospitals\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

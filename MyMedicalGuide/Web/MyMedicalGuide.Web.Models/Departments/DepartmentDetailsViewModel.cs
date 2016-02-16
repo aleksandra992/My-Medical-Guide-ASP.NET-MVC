@@ -7,6 +7,8 @@
 
     public class DepartmentDetailsViewModel : IMapFrom<Department>
     {
+
+
         public string Description { get; set; }
 
         public IEnumerable<DoctorBasicViewModel> Doctors { get; set; }

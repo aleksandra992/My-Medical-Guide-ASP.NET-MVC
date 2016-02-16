@@ -26,7 +26,7 @@
         public ActionResult Details(int id)
         {
             var department = departmentsService.GetById(id);
-            var viewModelDepartmentDetails = this.Mapper.Map<DepartmentDetailsViewModel>(department);
+            var viewModelDepartmentDetails = this.Mapper.Map<DepartmentViewModel>(department);
             return View(viewModelDepartmentDetails);
         }
     }
