@@ -98,6 +98,7 @@
     <Compile Include="Account\ResetPasswordViewModel.cs" />
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Appointments\AppointmentInputModel.cs" />
     <Compile Include="Departments\DepartmentDetailsViewModel.cs" />
     <Compile Include="Departments\DepartmentViewModel.cs" />
     <Compile Include="Doctors\DoctorBasicViewModel.cs" />
