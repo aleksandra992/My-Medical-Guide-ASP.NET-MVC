@@ -25,7 +25,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
         }
 
         [HttpGet]
-        public ActionResult NewAppointment()
+        public ActionResult Create()
         {
             var inputAppointmentModel = new AppointmentInputModel();
             var doctors = doctorsService.GetAll();
@@ -41,6 +41,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AppointmentInputModel appointment)
         {
+            
             if (this.ModelState.IsValid)
             {
                 var appointmentDb = this.Mapper.Map<Appointment>(appointment);
@@ -49,7 +50,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
                 this.Redirect("/");
             }
 
-            return View();
+            return View(appointment);
 
         }
     }

@@ -304,7 +304,7 @@
     <Content Include="Areas\Doctor\Views\web.config" />
     <Content Include="Areas\Patient\Views\web.config" />
     <Content Include="Areas\Patient\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Patient\Views\Appointments\NewAppointment.cshtml" />
+    <Content Include="Areas\Patient\Views\Appointments\Create.cshtml" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
@@ -379,7 +379,6 @@
     <Content Include="Views\Shared\DisplayTemplates\BasicHospitalViewModel.cshtml" />
     <Content Include="Views\Hospitals\All.cshtml" />
     <Content Include="Views\Hospitals\Details.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,6 +394,7 @@
     <Folder Include="Areas\Patient\Models\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

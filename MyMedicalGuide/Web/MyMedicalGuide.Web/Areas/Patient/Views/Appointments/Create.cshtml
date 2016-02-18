@@ -25,14 +25,14 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.EditorFor(x => x.StartDate)
+                            @Html.TextBoxFor(x => x.StartDate,new { @class = "datepicker" })
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.EditorFor(x => x.EndDate)
+                            @Html.EditorFor(x => x.EndDate, new { @class = "datepicker" })
                         </div>
                     </div>
                 </div>
