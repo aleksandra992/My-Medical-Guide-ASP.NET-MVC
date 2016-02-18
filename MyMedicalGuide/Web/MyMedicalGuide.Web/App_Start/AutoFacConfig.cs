@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using MyMedicalGuide.Data;
 using MyMedicalGuide.Data.Repositories;
 using MyMedicalGuide.Services.Contracts;
+using MyMedicalGuide.Services.Web;
 using MyMedicalGuide.Web.Controllers;
 using System;
 using System.Collections.Generic;
@@ -47,14 +48,14 @@ namespace MyMedicalGuide.Web.App_Start
         private static void RegisterServices(ContainerBuilder builder)
         {
             builder.Register(x => new MyMedicalGuideDbContext())
-                .As<IMyMedicalGuideDbContext>();
-            //    .InstancePerRequest();
-            //builder.Register(x => new HttpCacheService())
-            //    .As<ICacheService>()
-            //    .InstancePerRequest();
-            //builder.Register(x => new IdentifierProvider())
-            //    .As<IIdentifierProvider>()
-            //    .InstancePerRequest();
+                .As<IMyMedicalGuideDbContext>()
+                .InstancePerRequest();
+            builder.Register(x => new HttpCacheService())
+                .As<ICacheService>()
+                .InstancePerRequest();
+            builder.Register(x => new IdentifierProvider())
+                .As<IIdentifierProvider>()
+                .InstancePerRequest();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(IPatientService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();

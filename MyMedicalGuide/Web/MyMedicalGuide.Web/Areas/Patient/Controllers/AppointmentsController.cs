@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Microsoft.AspNet.Identity;
 namespace MyMedicalGuide.Web.Areas.Patient.Controllers
 {
     using System.Web.Mvc;
@@ -41,13 +41,14 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AppointmentInputModel appointment)
         {
-            
             if (this.ModelState.IsValid)
             {
                 var appointmentDb = this.Mapper.Map<Appointment>(appointment);
-                this.appointmentsService.Add(appointmentDb);
+                appointmentDb.CreatedOn = DateTime.Now;
+                appointmentDb.PatientId = this.User.Identity.GetUserId();
+                //this.appointmentsService.Add(appointmentDb);
                 this.TempData["AppointmentAddedMsg"] = "Succesfully appointment added";
-                this.Redirect("/");
+                return this.Redirect("/");
             }
 
             return View(appointment);

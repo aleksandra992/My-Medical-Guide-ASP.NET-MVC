@@ -15,6 +15,7 @@
         }
 
         [HttpGet]
+        [OutputCache(Duration = 60)]
         public ActionResult All()
         {
             var departments = departmentsService.GetAll();

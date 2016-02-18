@@ -20,6 +20,7 @@ namespace MyMedicalGuide.Services
         public void Add(Appointment appointment)
         {
             appointmentRepo.Add(appointment);
+            appointmentRepo.SaveChanges();
         }
     }
 }

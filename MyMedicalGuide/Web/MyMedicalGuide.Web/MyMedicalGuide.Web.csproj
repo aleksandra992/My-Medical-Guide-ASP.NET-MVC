@@ -417,6 +417,10 @@
       <Project>{df236a37-9313-4a3f-bbae-0d70418572c3}</Project>
       <Name>MyMedicalGuide.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\MyMedicalGuide.Services.Web\MyMedicalGuide.Services.Web.csproj">
+      <Project>{73224d41-3b4f-477a-b856-3705fc9e37f0}</Project>
+      <Name>MyMedicalGuide.Services.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\MyMedicalGuide.Services\MyMedicalGuide.Services.csproj">
       <Project>{ee5356b9-1c07-41ca-af2d-9b67d49f8b29}</Project>
       <Name>MyMedicalGuide.Services</Name>
