@@ -117,7 +117,7 @@ namespace MyMedicalGuide.Data.Migrations
                    new Department
                    {
                        Name = "CardioSurgery",
-                       Picture = "../Content/Departments/1.jpg",
+                       Picture = "/Content/Departments/1.jpg",
                        Description = "Cardiothoracic surgery is the"
                                      + " field of medicine involved in "
                                      + "surgical treatment of organs inside "
@@ -129,7 +129,7 @@ namespace MyMedicalGuide.Data.Migrations
                     new Department
                     {
                         Name = "Urology",
-                        Picture = "../Content/Departments/2.jpg",
+                        Picture = "/Content/Departments/2.jpg",
                         Description = "Urology, also known as genitourinary surgery,"
                                       + " is the branch of medicine that focuses on"
                                       + " surgical and medical diseases of the male "
@@ -140,7 +140,7 @@ namespace MyMedicalGuide.Data.Migrations
                     new Department
                     {
                         Name = "Cardiology",
-                        Picture = "../Content/Departments/3.jpg",
+                        Picture = "/Content/Departments/3.jpg",
                         Description = "Cardiologists are doctors"
                                       + " who specialize in diagnosing and treating"
                                       + " diseases or conditions of the heart and blood "
@@ -154,9 +154,9 @@ namespace MyMedicalGuide.Data.Migrations
 
                 var departmentsPart2 = new List<Department>()
                 {
-                      new Department() { Name = "Neurology",CreatedOn = DateTime.Now,Picture="../Content/Departments/4.jpg",Description="A neurologist is a doctor who specializes in treating diseases of the nervous system. The nervous system comprises the central and peripheral nervous system. This complex system involves the spinal cord and the brain."},
-                    new Department() { Name = "Nuclear Medicine",CreatedOn = DateTime.Now,Picture="../Content/Departments/5.jpg",Description="Nuclear medicine is a branch of medical imaging that uses small amounts of radioactive material to diagnose and determine the severity of or treat a variety of diseases, including many types of cancers, heart disease, gastrointestinal, endocrine, neurological disorders and other abnormalities within the body." },
-                    new Department() { Name = "Pediatrics",CreatedOn = DateTime.Now,Picture="../Content/Departments/6.jpg",Description="Pediatrics (also spelled paediatrics or p?diatrics) is the branch of medicine that deals with the medical care of infants, children, and adolescents, and the age limit usually ranges from birth up to 18 years of age (in some places until completion of secondary education, and until age 21 in the United States).[citation needed] A medical practitioner who specializes in this area is known as a pediatrician, or paediatrician." }
+                      new Department() { Name = "Neurology",CreatedOn = DateTime.Now,Picture="/Content/Departments/4.jpg",Description="A neurologist is a doctor who specializes in treating diseases of the nervous system. The nervous system comprises the central and peripheral nervous system. This complex system involves the spinal cord and the brain."},
+                    new Department() { Name = "Nuclear Medicine",CreatedOn = DateTime.Now,Picture="/Content/Departments/5.jpg",Description="Nuclear medicine is a branch of medical imaging that uses small amounts of radioactive material to diagnose and determine the severity of or treat a variety of diseases, including many types of cancers, heart disease, gastrointestinal, endocrine, neurological disorders and other abnormalities within the body." },
+                    new Department() { Name = "Pediatrics",CreatedOn = DateTime.Now,Picture="/Content/Departments/6.jpg",Description="Pediatrics (also spelled paediatrics or p?diatrics) is the branch of medicine that deals with the medical care of infants, children, and adolescents, and the age limit usually ranges from birth up to 18 years of age (in some places until completion of secondary education, and until age 21 in the United States).[citation needed] A medical practitioner who specializes in this area is known as a pediatrician, or paediatrician." }
                 };
 
                 context.Departments.AddOrUpdate(departmentsPart1.ToArray());
@@ -215,13 +215,15 @@ namespace MyMedicalGuide.Data.Migrations
                                                 Patients = patients,
                                                 Doctors = doctors,
                                                 Departments = departments,
-                                                CreatedOn = DateTime.Now
+                                                CreatedOn = DateTime.Now,
+                                                Image="/Content/Hospitals/1.jpg"
                                             },
                                         new Hospital()
                                             {
                                                 Name = "Sveta Ana",
                                                 Address = "Bogatisa",
-                                                CreatedOn = DateTime.Now
+                                                CreatedOn = DateTime.Now,
+                                                Image="/Content/Hospitals/2.jpg"
                                             }
                                     };
             if (!context.Hospitals.Any())

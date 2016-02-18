@@ -17,11 +17,9 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="mdi-action-account-circle prefix"></i>
-                        @(Html.Kendo().DropDownList()
-                        .Name("Doctors")
-                        .DataTextField("Name")
-                        .DataValueField("DoctorId")
-                        .BindTo((IEnumerable)Model.Doctors))
+
+                        @Html.DropDownListFor(x => x.DoctorId, new SelectList(Model.Doctors, "Id", "Name"))
+
                     </div>
                 </div>
                 <div class="row">
@@ -53,7 +51,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/kendo")   
+<script>
+     $(function () {
+         $(".datePicker").datepicker({
+            showOn: "button",
+            buttonText: "Select date"
+         });
+     });
+</script>
 }
 
 @section KendoStyles{

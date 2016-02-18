@@ -1,0 +1,8 @@
+﻿@model DateTime?
+
+@Html.TextBox("", (Model.HasValue ? Model.Value.ToShortDateString() :
+string.Empty), new
+{
+    @class = "datePicker",
+    @readonly = "readonly"
+})
