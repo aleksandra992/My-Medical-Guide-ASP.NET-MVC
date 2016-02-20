@@ -28,8 +28,7 @@ namespace MyMedicalGuide.Web
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
                        "~/Content/kendo/kendo.common-material.min.css",
                        "~/Content/kendo/kendo.material.min.css"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(                      
+            bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
 
 

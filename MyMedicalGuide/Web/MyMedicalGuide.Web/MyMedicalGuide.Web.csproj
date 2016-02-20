@@ -219,6 +219,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
@@ -239,15 +241,27 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\kendo\Flat\editor.png" />
+    <Content Include="Content\kendo\Flat\imagebrowser.png" />
+    <Content Include="Content\kendo\Flat\indeterminate.gif" />
+    <Content Include="Content\kendo\Flat\loading-image.gif" />
+    <Content Include="Content\kendo\Flat\loading.gif" />
+    <Content Include="Content\kendo\Flat\loading_2x.gif" />
+    <Content Include="Content\kendo\Flat\markers.png" />
+    <Content Include="Content\kendo\Flat\markers_2x.png" />
+    <Content Include="Content\kendo\Flat\slider-h.gif" />
+    <Content Include="Content\kendo\Flat\slider-v.gif" />
+    <Content Include="Content\kendo\Flat\sprite.png" />
+    <Content Include="Content\kendo\Flat\sprite_2x.png" />
+    <Content Include="Content\kendo\Flat\sprite_kpi.png" />
+    <Content Include="Content\kendo\Flat\sprite_kpi_2x.png" />
     <Content Include="Content\kendo\fonts\DejaVu\LICENSE.txt" />
     <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.svg" />
     <Content Include="Content\kendo\images\back.png" />
     <Content Include="Content\kendo\images\kendoui.svg" />
     <Content Include="Content\kendo\images\wp8_icons.png" />
     <Content Include="Content\kendo\images\wp8_inverseicons.png" />
-    <Content Include="Content\kendo\kendo.common-material.min.css" />
     <Content Include="Content\kendo\kendo.common.min.css" />
-    <Content Include="Content\kendo\kendo.material.min.css" />
     <Content Include="Content\kendo\Material\editor.png" />
     <Content Include="Content\kendo\Material\imagebrowser.png" />
     <Content Include="Content\kendo\Material\indeterminate.gif" />
@@ -323,6 +337,9 @@
     <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.woff" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -385,8 +402,8 @@
     <Folder Include="Areas\AdminHospital\Controllers\" />
     <Folder Include="Areas\AdminHospital\Models\" />
     <Folder Include="Areas\AdminHospital\Views\Shared\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Doctor\Controllers\" />
     <Folder Include="Areas\Doctor\Models\" />
@@ -394,6 +411,7 @@
     <Folder Include="Areas\Patient\Models\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Views\AdminHome\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

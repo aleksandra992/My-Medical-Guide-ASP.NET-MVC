@@ -29,27 +29,36 @@
             <div class="nav-wrapper">
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Hospitals", "All", "Hospitals")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Appointments", "Add", "Appointments", new { area = "Patients" })</li>
+                        <li>@Html.ActionLink("Appointments", "Create", "Appointments", new { area = "Patient" }, null)</li>
                     }
+                    @if (User.IsInRole("Admin"))
+                    {
 
+                        <li>@Html.ActionLink("AdminHome", "Index", "AdminHome", new { area = "Admin" }, null)</li>
+                        <li>@Html.ActionLink("Manage Hospitals", "Hospitals", "AdminHome", new { area = "Admin" }, null)</li>
+                    }
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Hospitals", "All", "Hospitals")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Appointments", "Add", "Appointments", new { area = "Patients" })</li>
+                        <li>@Html.ActionLink("Appointments", "Create", "Appointments", new { area = "Patient" }, null)</li>
                     }
+                    @if (User.IsInRole("Admin"))
+                    {
 
-
+                        <li>@Html.ActionLink("AdminHome", "Index", "AdminHome", new { area = "Admin" }, null)</li>
+                        <li>@Html.ActionLink("Manage Hospitals", "Hospitals", "AdminHome", new { area = "Admin" }, null)</li>
+                    }
                 </ul>
                 <ul class="right">
                     @Html.Partial("_LoginPartial")

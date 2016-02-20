@@ -2,23 +2,24 @@
 
 namespace MyMedicalGuide.Web.Areas.AdminArea
 {
-    public class AdminAreaAreaRegistration : AreaRegistration 
+    public class AdminAreaAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
-                return "AdminArea";
+                return "Admin";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "AdminArea_default",
-                "AdminArea/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional },
+                   namespaces: new[] { "MyMedicalGuide.Web.Areas.Admin.Controllers" }
+                   );
         }
     }
 }
