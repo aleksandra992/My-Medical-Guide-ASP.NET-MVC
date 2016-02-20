@@ -220,6 +220,7 @@
     <Compile Include="Areas\Admin\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Hospitals1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
@@ -339,6 +340,7 @@
     <Content Include="Content\kendo\images\kendoui.woff" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Hospitals\Details1.cshtml" />
     <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />

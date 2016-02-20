@@ -1,2 +1,42 @@
-﻿<h1>Hiii</h1>
+﻿
+@(Html.Kendo().Grid<MyMedicalGuide.Data.Models.Doctor>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.CreatedOn);
+          columns.Bound(c => c.ModifiedOn);
+          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.DeletedOn);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Doctors_Read", "Hospitals", new { id = ViewBag.HospitalId }))
+          .Create(create => create.Action("Doctors_Create", "Hospitals"))
+          .Update(update => update.Action("Doctors_Update", "Hospitals"))
+          .Destroy(destroy => destroy.Action("Doctors_Destroy", "Hospitals"))
+      )
+)
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/kendo")
 
+}
+@section KendoStyles{
+    @Styles.Render("~/Content/kendo")
+}
