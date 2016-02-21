@@ -358,6 +358,7 @@
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DoctorGridViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\HospitalGridViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

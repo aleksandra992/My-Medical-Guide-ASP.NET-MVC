@@ -10,12 +10,21 @@ using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using MyMedicalGuide.Data.Models;
 using MyMedicalGuide.Data;
+using MyMedicalGuide.Services.Contracts;
+using MyMedicalGuide.Web.Models.Hospitals;
+using MyMedicalGuide.Web.Infrastructure.Mapping;
+using MyMedicalGuide.Web.Controllers;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
-    public class AdminHomeController : Controller
+    public class AdminHomeController : BaseController
     {
-        private MyMedicalGuideDbContext db = new MyMedicalGuideDbContext();
+        private readonly IHospitalsService hospitals;
+
+        public AdminHomeController(IHospitalsService hospitals)
+        {
+            this.hospitals = hospitals;
+        }
 
         public ActionResult Index()
         {
@@ -24,90 +33,44 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 
         public ActionResult Hospitals_Read([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<Hospital> hospitals = db.Hospitals;
-            DataSourceResult result = hospitals.ToDataSourceResult(request, hospital => new {
-                Id = hospital.Id,
-                Image = hospital.Image,
-                Name = hospital.Name,
-                Address = hospital.Address,
-                CreatedOn = hospital.CreatedOn,
-                ModifiedOn = hospital.ModifiedOn,
-                IsDeleted = hospital.IsDeleted,
-                DeletedOn = hospital.DeletedOn
-            });
+            IQueryable<Hospital> hospitals = this.hospitals.GetAll();
+            DataSourceResult result = hospitals.AsQueryable().To<HospitalGridViewModel>()
+                .ToDataSourceResult(request);
 
             return Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Hospitals_Create([DataSourceRequest]DataSourceRequest request, Hospital hospital)
+        public ActionResult Hospitals_Create([DataSourceRequest]DataSourceRequest request, HospitalGridViewModel hospital)
         {
             if (ModelState.IsValid)
             {
-                var entity = new Hospital
-                {
-                    Image = hospital.Image,
-                    Name = hospital.Name,
-                    Address = hospital.Address,
-                    CreatedOn = hospital.CreatedOn,
-                    ModifiedOn = hospital.ModifiedOn,
-                    IsDeleted = hospital.IsDeleted,
-                    DeletedOn = hospital.DeletedOn
-                };
-
-                db.Hospitals.Add(entity);
-                db.SaveChanges();
-                hospital.Id = entity.Id;
+                var entity = this.Mapper.Map<Hospital>(hospital);
+                this.hospitals.Add(entity);
             }
 
             return Json(new[] { hospital }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Hospitals_Update([DataSourceRequest]DataSourceRequest request, Hospital hospital)
+        public ActionResult Hospitals_Update([DataSourceRequest]DataSourceRequest request, HospitalGridViewModel hospital)
         {
             if (ModelState.IsValid)
             {
-                var entity = new Hospital
-                {
-                    Id = hospital.Id,
-                    Image = hospital.Image,
-                    Name = hospital.Name,
-                    Address = hospital.Address,
-                    CreatedOn = hospital.CreatedOn,
-                    ModifiedOn = hospital.ModifiedOn,
-                    IsDeleted = hospital.IsDeleted,
-                    DeletedOn = hospital.DeletedOn
-                };
-
-                db.Hospitals.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                var entity = this.Mapper.Map<Hospital>(hospital);
+                this.hospitals.Update(entity);
             }
 
             return Json(new[] { hospital }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Hospitals_Destroy([DataSourceRequest]DataSourceRequest request, Hospital hospital)
+        public ActionResult Hospitals_Destroy([DataSourceRequest]DataSourceRequest request, HospitalGridViewModel hospital)
         {
             if (ModelState.IsValid)
             {
-                var entity = new Hospital
-                {
-                    Id = hospital.Id,
-                    Image = hospital.Image,
-                    Name = hospital.Name,
-                    Address = hospital.Address,
-                    CreatedOn = hospital.CreatedOn,
-                    ModifiedOn = hospital.ModifiedOn,
-                    IsDeleted = hospital.IsDeleted,
-                    DeletedOn = hospital.DeletedOn
-                };
-
-                db.Hospitals.Attach(entity);
-                db.Hospitals.Remove(entity);
-                db.SaveChanges();
+                var entity = this.Mapper.Map<Hospital>(hospital);
+                this.hospitals.Delete(entity);
             }
 
             return Json(new[] { hospital }.ToDataSourceResult(request, ModelState));
@@ -123,7 +86,7 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.hospitals.Dispose();
             base.Dispose(disposing);
         }
     }
