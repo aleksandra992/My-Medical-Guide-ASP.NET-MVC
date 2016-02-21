@@ -3,7 +3,7 @@
     <div class="blog-card">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <a href=@Model.Url><img src=@Model.Picture alt="department-img"></a>
+                <a href=@(Model.Url + "?hospitalId=" + TempData["hospitalId"])><img src=@Model.Picture alt="department-img"></a>
             </div>
             <a class="btn-floating waves-effect waves-light light-blue"><i class="mdi-action-info activator"></i></a>
 

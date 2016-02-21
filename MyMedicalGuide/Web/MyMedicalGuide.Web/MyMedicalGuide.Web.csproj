@@ -228,6 +228,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -411,10 +412,10 @@
     <Content Include="Views\Departments\All.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DepartmentViewModel.cshtml" />
     <Content Include="Views\Departments\Details.cshtml" />
-    <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BasicHospitalViewModel.cshtml" />
     <Content Include="Views\Hospitals\All.cshtml" />
     <Content Include="Views\Hospitals\Details.cshtml" />
+    <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -430,6 +431,7 @@
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />
+    <Folder Include="Views\Doctors\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

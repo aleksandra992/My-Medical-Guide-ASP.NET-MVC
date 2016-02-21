@@ -23,17 +23,19 @@
         [HttpGet]
         public ActionResult All()
         {
-            var hospitals = cacheService.Get<IEnumerable<Hospital>>("hospitals", () => { return hospitalsService.GetAll().ToList(); }, 60);
+            var hospitals = this.cacheService.Get<IEnumerable<Hospital>>("hospitals", () => { return hospitalsService.GetAll().ToList(); }, 60);
             var viewModelHospitals = this.Mapper.Map<IEnumerable<BasicHospitalViewModel>>(hospitals);
-            return View(viewModelHospitals);
+            return this.View(viewModelHospitals);
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var departments = hospitalsService.GetById(id).Departments;
+            var departments = this.hospitalsService.GetById(id).Departments;
             var departmentsResult = this.Mapper.Map<IEnumerable<DepartmentViewModel>>(departments);
-            return View(departmentsResult);
+            this.TempData["hospitalId"] = id;
+            return this.View(departmentsResult);
         }
+
     }
 }

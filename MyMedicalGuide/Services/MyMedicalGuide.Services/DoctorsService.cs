@@ -47,5 +47,11 @@ namespace MyMedicalGuide.Services
             this.doctorsrepo.Dispose();
         }
 
+        public IQueryable<Doctor> GetAllDoctorsFromDepartmentHospital(int hospitalId, int departmentId)
+        {
+            return this.doctorsrepo
+                 .All()
+                 .Where(x => x.HospitalId == hospitalId && x.DepartmentId == departmentId);
+        }
     }
 }
