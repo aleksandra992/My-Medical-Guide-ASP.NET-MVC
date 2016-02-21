@@ -17,6 +17,8 @@
 
         void Dispose();
 
+        IQueryable<Doctor> GetAllDoctorsFromDepartmentHospital(int hospitalId, int departmentId);
+
 
     }
 }

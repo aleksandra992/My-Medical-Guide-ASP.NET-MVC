@@ -9,5 +9,7 @@ namespace MyMedicalGuide.Services.Contracts
         IQueryable<Department> GetAll();
 
         Department GetById(int id);
+
+        Department GetDepartmentByIdFromParticularHospital(int departmentId, int hospitalId);
     }
 }

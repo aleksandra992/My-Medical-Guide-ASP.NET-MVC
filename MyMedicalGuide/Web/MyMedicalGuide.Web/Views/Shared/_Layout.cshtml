@@ -35,7 +35,7 @@
                     <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Appointments", "Create", "Appointments", new { area = "Patient" }, null)</li>
+                        <li>@Html.ActionLink("Find Doctor", "Add", "Doctors", new { area = "Patient" }, null)</li>
                     }
                     @if (User.IsInRole("Admin"))
                     {
@@ -76,7 +76,7 @@
         </footer>
     </div>
 
-   
+
     @RenderSection("scripts", required: false)
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>

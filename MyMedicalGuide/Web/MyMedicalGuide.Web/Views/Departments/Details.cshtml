@@ -12,12 +12,10 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="card">
-            <div class="card-content grey-text">
 
-            </div>
-        </div>
+</div>
+<div class="row center">
+    <div class="row">
+        @Html.Action("GetDoctors", "Doctors", new { departmentId = Model.Id, hospitalId = TempData["hospitalId"] });
     </div>
 </div>
-
