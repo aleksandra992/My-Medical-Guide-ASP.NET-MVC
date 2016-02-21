@@ -10,102 +10,98 @@ using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using MyMedicalGuide.Data.Models;
 using MyMedicalGuide.Data;
+using MyMedicalGuide.Services.Contracts;
+using MyMedicalGuide.Web.Infrastructure.Mapping;
+using MyMedicalGuide.Web.Models.Doctors;
+using MyMedicalGuide.Web.Controllers;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
-    public class HospitalsController : Controller
+    public class HospitalsController : BaseController
     {
-        private MyMedicalGuideDbContext db = new MyMedicalGuideDbContext();
+        private readonly IHospitalsService hospitals;
+        private readonly IDoctorsService doctors;
+        private readonly IUsersService users;
 
-        public ActionResult Details(int id)
+        public HospitalsController(IHospitalsService hospitals, IDoctorsService doctors, IUsersService users)
+        {
+            this.hospitals = hospitals;
+            this.doctors = doctors;
+            this.users = users;
+        }
+
+        public ActionResult Details(int? id)
         {
             this.ViewBag.HospitalId = id;
-            return View();
+
+            return this.View();
         }
 
         public ActionResult Doctors_Read([DataSourceRequest]DataSourceRequest request, int id)
         {
-            IQueryable<MyMedicalGuide.Data.Models.Doctor> doctors = db.Doctors.Where(x => x.Hospital.Id == id);
-            DataSourceResult result = doctors.ToDataSourceResult(request, doctor => new
-            {
-                Id = doctor.Id,
-                CreatedOn = doctor.CreatedOn,
-                ModifiedOn = doctor.ModifiedOn,
-                IsDeleted = doctor.IsDeleted,
-                DeletedOn = doctor.DeletedOn
-            });
-
-            return Json(result);
+            ICollection<MyMedicalGuide.Data.Models.Doctor> doctors = this.hospitals.GetById(id).Doctors;
+            DataSourceResult result = doctors.AsQueryable().To<DoctorGridViewModel>()
+                .ToDataSourceResult(request);
+            this.TempData["hospitalId"] = id;
+            return this.Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Doctors_Create([DataSourceRequest]DataSourceRequest request, MyMedicalGuide.Data.Models.Doctor doctor)
+        public ActionResult Doctors_Create([DataSourceRequest]DataSourceRequest request, DoctorGridViewModel doctor)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new MyMedicalGuide.Data.Models.Doctor
+                var context = new MyMedicalGuideDbContext();
+                var userManager = new UserManager<User>(new UserStore<User>(context));
+                var userDoctor = new User()
                 {
-                    CreatedOn = doctor.CreatedOn,
-                    ModifiedOn = doctor.ModifiedOn,
-                    IsDeleted = doctor.IsDeleted,
-                    DeletedOn = doctor.DeletedOn
+                    Email = doctor.Email,
+                    FirstName = doctor.FirstName,
+                    LastName = doctor.LastName,
+                    PhoneNumber = doctor.PhoneNumber,
+                    UserName = doctor.Username
                 };
+                var hospitalId = this.TempData["hospitalId"];
+                userManager.Create(userDoctor, doctor.Password);
+                var DoctorDb = new MyMedicalGuide.Data.Models.Doctor() { User = userDoctor, HospitalId = (int)hospitalId, DepartmentId = 5, CreatedOn = DateTime.Now };
+                context.Doctors.Add(DoctorDb);
 
-                db.Doctors.Add(entity);
-                db.SaveChanges();
-                doctor.Id = entity.Id;
+                userManager.AddToRole(userDoctor.Id, "Doctor");
+
             }
 
-            return Json(new[] { doctor }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { doctor }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Doctors_Update([DataSourceRequest]DataSourceRequest request, MyMedicalGuide.Data.Models.Doctor doctor)
+        public ActionResult Doctors_Update([DataSourceRequest]DataSourceRequest request, DoctorGridViewModel doctor)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new MyMedicalGuide.Data.Models.Doctor
-                {
-                    Id = doctor.Id,
-                    CreatedOn = doctor.CreatedOn,
-                    ModifiedOn = doctor.ModifiedOn,
-                    IsDeleted = doctor.IsDeleted,
-                    DeletedOn = doctor.DeletedOn
-                };
-
-                db.Doctors.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                var entity = this.Mapper.Map<MyMedicalGuide.Data.Models.Doctor>(doctor);
+                this.doctors.Update(entity);
             }
 
-            return Json(new[] { doctor }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { doctor }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Doctors_Destroy([DataSourceRequest]DataSourceRequest request, MyMedicalGuide.Data.Models.Doctor doctor)
+        public ActionResult Doctors_Destroy([DataSourceRequest]DataSourceRequest request, DoctorGridViewModel doctor)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new MyMedicalGuide.Data.Models.Doctor
-                {
-                    Id = doctor.Id,
-                    CreatedOn = doctor.CreatedOn,
-                    ModifiedOn = doctor.ModifiedOn,
-                    IsDeleted = doctor.IsDeleted,
-                    DeletedOn = doctor.DeletedOn
-                };
-
-                db.Doctors.Attach(entity);
-                db.Doctors.Remove(entity);
-                db.SaveChanges();
+                var entity = this.Mapper.Map<MyMedicalGuide.Data.Models.Doctor>(doctor);
+                this.doctors.Delete(entity);
             }
 
-            return Json(new[] { doctor }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { doctor }.ToDataSourceResult(request, this.ModelState));
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.doctors.Dispose();
             base.Dispose(disposing);
         }
     }

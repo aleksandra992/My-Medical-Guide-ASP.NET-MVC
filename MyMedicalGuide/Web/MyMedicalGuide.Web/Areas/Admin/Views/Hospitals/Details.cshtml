@@ -1,13 +1,12 @@
 ﻿
-@(Html.Kendo().Grid<MyMedicalGuide.Data.Models.Doctor>()
+@(Html.Kendo().Grid<MyMedicalGuide.Web.Models.Doctors.DoctorGridViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
-          columns.Bound(c => c.CreatedOn);
-          columns.Bound(c => c.ModifiedOn);
-          columns.Bound(c => c.IsDeleted);
-          columns.Bound(c => c.DeletedOn);
-          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          columns.Bound(c => c.FirstName);
+          columns.Bound(c => c.LastName);
+          columns.Bound(c => c.DepartmentName);
+          columns.Command(command => { command.Destroy(); }).Width(180);
       })
       .ToolBar(toolbar =>
       {
@@ -27,7 +26,7 @@
           .Ajax()
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("Doctors_Read", "Hospitals", new { id = ViewBag.HospitalId }))
-          .Create(create => create.Action("Doctors_Create", "Hospitals"))
+          .Create(create => create.Action("Doctors_Create", "Hospitals", new { id = ViewBag.HospitalId }))
           .Update(update => update.Action("Doctors_Update", "Hospitals"))
           .Destroy(destroy => destroy.Action("Doctors_Destroy", "Hospitals"))
       )

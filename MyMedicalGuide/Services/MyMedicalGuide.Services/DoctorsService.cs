@@ -19,9 +19,32 @@ namespace MyMedicalGuide.Services
             this.doctorsrepo = doctorsrepo;
         }
 
+        public void Add(Doctor doctor)
+        {
+            this.doctorsrepo.Add(doctor);
+            this.doctorsrepo.SaveChanges();
+        }
+
+        public void Delete(Doctor doctor)
+        {
+            this.doctorsrepo.Delete(doctor);
+        }
+
         public IQueryable<Doctor> GetAll()
         {
             return this.doctorsrepo.All();
         }
+
+        public void Update(Doctor doctor)
+        {
+            this.doctorsrepo.Update(doctor);
+            this.doctorsrepo.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            this.doctorsrepo.Dispose();
+        }
+
     }
 }

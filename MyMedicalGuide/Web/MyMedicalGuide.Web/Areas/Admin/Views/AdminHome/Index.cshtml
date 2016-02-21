@@ -4,7 +4,7 @@
       .Columns(columns =>
       {
           columns.Template(@<text>
-       @Html.ActionLink("AdminHome", "Index", "AdminHome", new { area = "Admin", hospitalId = @item.Id }, null)
+        @Html.ActionLink("AdminHome", "Index", "AdminHome", new { area = "Admin", hospitalId = @item.Id }, null)
         </text>)
   .ClientTemplate("<a href='/Admin/Hospitals/Details/#= Id#'>Manage</a>")
   .Title("Manage");

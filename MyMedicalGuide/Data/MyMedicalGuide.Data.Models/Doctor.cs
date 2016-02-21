@@ -39,6 +39,8 @@ namespace MyMedicalGuide.Data.Models
 
         public virtual Department Department { get; set; }
 
+        public int? HospitalId { get; set; }
+
         public virtual Hospital Hospital { get; set; }
 
         public virtual ICollection<Patient> Patients
