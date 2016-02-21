@@ -27,9 +27,15 @@ namespace MyMedicalGuide.Data.Repositories
 
         protected IMyMedicalGuideDbContext Context { get; set; }
 
+
+        public IQueryable<T> AllWithDeleted()
+        {
+            return this.DbSet;
+        }
+
         public virtual IQueryable<T> All()
         {
-            return this.DbSet.AsQueryable();
+            return this.DbSet.Where(x => !x.IsDeleted);
         }
 
         public virtual T GetById(object id)
@@ -39,61 +45,24 @@ namespace MyMedicalGuide.Data.Repositories
 
         public virtual void Add(T entity)
         {
-            var entry = this.Context.Entry(entity);
-            if (entry.State != EntityState.Detached)
-            {
-                entry.State = EntityState.Added;
-            }
-            else
-            {
-                this.DbSet.Add(entity);
-            }
+            this.DbSet.Add(entity);
         }
 
         public virtual void Update(T entity)
         {
-            var entry = this.Context.Entry(entity);
-            if (entry.State == EntityState.Detached)
-            {
-                this.DbSet.Attach(entity);
-            }
-
-            entry.State = EntityState.Modified;
+            this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public virtual void Delete(T entity)
         {
-            var entry = this.Context.Entry(entity);
-            if (entry.State != EntityState.Deleted)
-            {
-                entry.State = EntityState.Deleted;
-            }
-            else
-            {
-                this.DbSet.Attach(entity);
-                this.DbSet.Remove(entity);
-            }
+            entity.IsDeleted = true;
+            entity.DeletedOn = DateTime.Now;
+            this.Update(entity);
         }
 
-        public virtual void Delete(object id)
+        public void HardDelete(T entity)
         {
-            var entity = this.GetById(id);
-
-            if (entity != null)
-            {
-                this.Delete(entity);
-            }
-        }
-
-        public virtual T Attach(T entity)
-        {
-            return this.Context.Set<T>().Attach(entity);
-        }
-
-        public virtual void Detach(T entity)
-        {
-            var entry = this.Context.Entry(entity);
-            entry.State = EntityState.Detached;
+            this.DbSet.Remove(entity);
         }
 
         public int SaveChanges()
@@ -104,6 +73,19 @@ namespace MyMedicalGuide.Data.Repositories
         public void Dispose()
         {
             this.Context.Dispose();
+        }
+
+
+        protected void ChangeEntityState(T entity, EntityState state)
+        {
+            var entry = this.Context.Entry(entity);
+
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = state;
         }
     }
 }

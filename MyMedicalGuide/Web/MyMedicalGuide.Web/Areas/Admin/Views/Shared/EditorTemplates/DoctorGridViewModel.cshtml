@@ -1,6 +1,6 @@
 ﻿@model MyMedicalGuide.Web.Models.Doctors.DoctorGridViewModel
 
-<h4>Create a new account.</h4>
+<h5>Add doctor</h5>
 <hr />
 @Html.ValidationSummary("", new { @class = "text-danger" })
 <div class="row">
@@ -24,9 +24,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="input-field col s12">
-        <i class="mdi-action-account-circle prefix"></i>
-
+    <div class="input-field col s12 right">
+        
         @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.Departments, "Id", "Name"))
 
     </div>
@@ -78,3 +77,6 @@
 
     </div>
 </div>
+<script>
+     $('select').material_select();
+</script>

@@ -7,6 +7,8 @@
 
     public interface IRepository<T, TKey> : IDisposable where T : BaseModel<TKey>
     {
+        IQueryable<T> AllWithDeleted();
+
         IQueryable<T> All();
 
         T GetById(object id);
@@ -17,12 +19,10 @@
 
         void Delete(T entity);
 
-        void Delete(object id);
-
-        T Attach(T entity);
-
-        void Detach(T entity);
+        void HardDelete(T entity);
 
         int SaveChanges();
+
+        void Dispose();
     }
 }

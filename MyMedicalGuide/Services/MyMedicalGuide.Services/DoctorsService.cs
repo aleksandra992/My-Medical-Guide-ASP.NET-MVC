@@ -28,6 +28,7 @@ namespace MyMedicalGuide.Services
         public void Delete(Doctor doctor)
         {
             this.doctorsrepo.Delete(doctor);
+            this.doctorsrepo.SaveChanges();
         }
 
         public IQueryable<Doctor> GetAll()
