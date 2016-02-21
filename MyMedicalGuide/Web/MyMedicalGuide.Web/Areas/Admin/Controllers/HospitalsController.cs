@@ -62,6 +62,7 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
         {
             if (this.ModelState.IsValid)
             {
+                //TODO:Create service for users
                 var context = new MyMedicalGuideDbContext();
                 var userManager = new UserManager<User>(new UserStore<User>(context));
                 var userDoctor = new User()

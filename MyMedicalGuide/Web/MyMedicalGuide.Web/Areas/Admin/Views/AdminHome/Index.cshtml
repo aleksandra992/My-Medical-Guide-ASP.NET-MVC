@@ -1,5 +1,5 @@
 ﻿
-@(Html.Kendo().Grid<MyMedicalGuide.Data.Models.Hospital>()
+@(Html.Kendo().Grid<MyMedicalGuide.Web.Models.Hospitals.HospitalGridViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
@@ -10,7 +10,10 @@
   .Title("Manage");
           columns.Bound(c => c.Name);
           columns.Bound(c => c.Address);
-          columns.Bound(c => c.CreatedOn);
+          columns.Bound(c =>  c.CreatedOn);
+          columns.Bound(c => c.NumOfDepartments);
+          columns.Bound(c => c.NumOfDoctors);
+          columns.Bound(c => c.NumOfPacients);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .ToolBar(toolbar =>
