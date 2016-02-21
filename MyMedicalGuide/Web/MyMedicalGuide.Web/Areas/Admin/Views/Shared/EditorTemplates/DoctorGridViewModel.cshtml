@@ -25,6 +25,14 @@
 </div>
 <div class="row">
     <div class="input-field col s12">
+        <i class="mdi-action-account-circle prefix"></i>
+
+        @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.Departments, "Id", "Name"))
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
 
         <i class="mdi-action-account-circle prefix"></i>
         @Html.TextBoxFor(m => m.Username)

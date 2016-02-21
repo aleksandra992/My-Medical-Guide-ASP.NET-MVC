@@ -16,6 +16,7 @@ using MyMedicalGuide.Web.Models.Doctors;
 using MyMedicalGuide.Web.Controllers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MyMedicalGuide.Web.Models.Departments;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
@@ -24,18 +25,26 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
         private readonly IHospitalsService hospitals;
         private readonly IDoctorsService doctors;
         private readonly IUsersService users;
+        private readonly IDepartmentsService departments;
 
-        public HospitalsController(IHospitalsService hospitals, IDoctorsService doctors, IUsersService users)
+        public HospitalsController(
+            IHospitalsService hospitals,
+            IDoctorsService doctors,
+            IUsersService users,
+            IDepartmentsService departments)
         {
             this.hospitals = hospitals;
             this.doctors = doctors;
             this.users = users;
+            this.departments = departments;
         }
 
         public ActionResult Details(int? id)
         {
+            var departmentsDb = this.departments.GetAll();
+            var outputDepartments = this.Mapper.Map<IEnumerable<DepartmentNameViewModel>>(departmentsDb);
             this.ViewBag.HospitalId = id;
-
+            this.ViewBag.Departments = outputDepartments;
             return this.View();
         }
 
@@ -65,7 +74,7 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
                 };
                 var hospitalId = this.TempData["hospitalId"];
                 userManager.Create(userDoctor, doctor.Password);
-                var DoctorDb = new MyMedicalGuide.Data.Models.Doctor() { User = userDoctor, HospitalId = (int)hospitalId, DepartmentId = 5, CreatedOn = DateTime.Now };
+                var DoctorDb = new MyMedicalGuide.Data.Models.Doctor() { User = userDoctor, HospitalId = (int)hospitalId, DepartmentId = doctor.DepartmentId, CreatedOn = DateTime.Now };
                 context.Doctors.Add(DoctorDb);
 
                 userManager.AddToRole(userDoctor.Id, "Doctor");

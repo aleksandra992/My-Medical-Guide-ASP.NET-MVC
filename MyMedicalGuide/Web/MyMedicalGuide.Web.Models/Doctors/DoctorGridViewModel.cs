@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using MyMedicalGuide.Web.Models.Departments;
 
 namespace MyMedicalGuide.Web.Models.Doctors
 {
@@ -28,12 +29,14 @@ namespace MyMedicalGuide.Web.Models.Doctors
         public string Username { get; set; }
 
         public string Id { get; set; }
-     
+
         public string DepartmentName { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
         public int DepartmentId { get; set; }
+
+        public IEnumerable<DepartmentNameViewModel> Departments { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

@@ -100,9 +100,9 @@
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="Appointments\AppointmentInputModel.cs" />
     <Compile Include="Departments\DepartmentDetailsViewModel.cs" />
+    <Compile Include="Departments\DepartmentNameViewModel.cs" />
     <Compile Include="Departments\DepartmentViewModel.cs" />
     <Compile Include="Doctors\DoctorBasicViewModel.cs" />
-    <Compile Include="Doctors\DoctorGridCreateViewModel.cs" />
     <Compile Include="Doctors\DoctorGridViewModel.cs" />
     <Compile Include="Hospitals\BasicHospitalViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
