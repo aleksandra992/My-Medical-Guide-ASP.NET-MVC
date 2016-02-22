@@ -221,6 +221,8 @@
     <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
@@ -271,10 +273,12 @@
     <Content Include="Content\kendo\images\kendoui.svg" />
     <Content Include="Content\kendo\images\wp8_icons.png" />
     <Content Include="Content\kendo\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\kendo.common-material.min.css" />
     <Content Include="Content\kendo\kendo.common-nova.min.css" />
     <Content Include="Content\kendo\kendo.common.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.nova.min.css" />
+    <Content Include="Content\kendo\kendo.nova.min.css" />
     <Content Include="Content\kendo\Material\editor.png" />
     <Content Include="Content\kendo\Material\imagebrowser.png" />
     <Content Include="Content\kendo\Material\indeterminate.gif" />
@@ -371,6 +375,9 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DoctorGridViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\HospitalGridViewModel.cshtml" />
     <Content Include="Areas\Patient\Views\Doctors\Add.cshtml" />
+    <Content Include="Areas\Doctor\Views\Requests\Index.cshtml" />
+    <Content Include="Areas\Doctor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Doctor\Views\Shared\EditorTemplates\RequestViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -439,15 +446,14 @@
     <Folder Include="Areas\AdminHospital\Views\Shared\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Home\" />
-    <Folder Include="Areas\Doctor\Controllers\" />
     <Folder Include="Areas\Doctor\Models\" />
-    <Folder Include="Areas\Doctor\Views\Shared\" />
     <Folder Include="Areas\Patient\Models\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />
     <Folder Include="Views\AutoComplete\" />
     <Folder Include="Views\Doctors\" />
+    <Folder Include="Views\Requests\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

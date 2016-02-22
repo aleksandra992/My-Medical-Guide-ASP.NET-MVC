@@ -5,5 +5,7 @@ namespace MyMedicalGuide.Services.Contracts
     public interface IPatientService
     {
         string Add(Patient patient);
+
+        Patient GetById(string id);
     }
 }

@@ -1,0 +1,12 @@
+﻿@model MyMedicalGuide.Web.Models.Requests.RequestViewModel
+
+@Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="row">
+    <div class="input-field col s12">
+
+        @Html.CheckBoxFor(m => m.IsApproved, new { isChecked = false })
+
+        @Html.LabelFor(m => m.IsApproved, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>

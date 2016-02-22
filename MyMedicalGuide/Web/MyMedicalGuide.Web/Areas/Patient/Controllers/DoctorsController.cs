@@ -28,6 +28,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Add(PatientRequestInputModel request)
         {
             if (!this.ModelState.IsValid)
