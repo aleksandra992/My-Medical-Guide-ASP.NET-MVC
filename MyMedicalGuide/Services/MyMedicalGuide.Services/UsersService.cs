@@ -30,5 +30,10 @@ namespace MyMedicalGuide.Services
             this.context.SaveChanges();
 
         }
+
+        public User GetUserById(string id)
+        {
+            return context.Users.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }

@@ -69,5 +69,16 @@ namespace MyMedicalGuide.Services
                  .Where(x => (x.User.FirstName.Contains(firstName) &&
                  (lastName != null ? x.User.LastName.Contains(lastName) : true)));
         }
+
+        public Doctor GetById(string id)
+        {
+            return this.doctorsrepo.GetById(id);
+        }
+
+        public void AddPatient(string doctorId, Patient patient)
+        {
+            this.doctorsrepo.GetById(doctorId).Patients.Add(patient);
+            this.doctorsrepo.SaveChanges();
+        }
     }
 }

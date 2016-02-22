@@ -20,5 +20,10 @@ namespace MyMedicalGuide.Services
             patients.SaveChanges();
             return patient.Id;
         }
+
+        public Patient GetById(string id)
+        {
+            return this.patients.GetById(id);
+        }
     }
 }

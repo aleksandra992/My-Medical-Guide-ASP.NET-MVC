@@ -10,5 +10,15 @@ namespace MyMedicalGuide.Services.Contracts
     public interface IPatientRequestService
     {
         void Add(PatientRequest request);
+
+        IQueryable<PatientRequest> GetByDoctorId(string id);
+
+        void Update(PatientRequest request);
+
+        void Delete(PatientRequest request);
+
+        PatientRequest GetById(int id);
+
+        void Dispose();
     }
 }

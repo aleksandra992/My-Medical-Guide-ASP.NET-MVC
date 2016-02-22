@@ -1,6 +1,8 @@
 ﻿@model MyMedicalGuide.Web.Models.Patients.PatientRequestInputModel
-    <div class="card-panel">
-        <div class="row">
+
+<div class="row">
+    <div class="col s6 offset-s3">
+        <div class="card-panel z-depth-4">
             @using (Html.BeginForm("Add", "Doctors", new { area = "Patient" }, FormMethod.Post, new { @class = "col s12", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -23,55 +25,54 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
-                                Submit
-                                <i class="mdi-content-send right"></i>
+                            <button class="btn red waves-effect waves-light lighten-2" type="submit" name="action">
+                                Send
                             </button>
                         </div>
                     </div>
                 </div>
             }
         </div>
-
     </div>
+</div>
 
-    @section styles{
-        @Styles.Render("~/Content/JqueryUICss")
-    }
+@section styles{
+    @Styles.Render("~/Content/JqueryUICss")
+}
 
-    @section scripts{
-        @Scripts.Render("~/bundles/jqueryui")
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryui")
 
-        <script type="text/javascript">
-            $(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-                $("#DoctorName").autocomplete({
-                    source: function (request, response) {
-                        $.ajax({
-                            url: "/AutoComplete/AutoCompleteDoctors",
-                            type: "POST",
-                            dataType: "json",
-                            data: { term: $("#DoctorName").val() },
-                            success: function (data) {
-                                console.log(data);
+            $("#DoctorName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/AutoComplete/AutoCompleteDoctors",
+                        type: "POST",
+                        dataType: "json",
+                        data: { term: $("#DoctorName").val() },
+                        success: function (data) {
+                            console.log(data);
+                            debugger;
+                            response($.map(data, function (item) {
                                 debugger;
-                                response($.map(data, function (item) {
-                                    debugger;
-                                    return { label: item.Name, value: item.Name, id: item.Id };
-                                }))
-                            }
-                        })
-                    },
-                    messages: {
-                        noResults: "No results found!"
-                    },
-                    select: function (event, ui) {
-                        var id = ui.item.id;
-                        $("input[name='DoctorId']").val(id)
-                        $("#DoctorName").val(ui.item.value)
-                        return false;
-                    }
-                });
-            })
-        </script>
-    }
+                                return { label: item.Name, value: item.Name, id: item.Id };
+                            }))
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "No results found!"
+                },
+                select: function (event, ui) {
+                    var id = ui.item.id;
+                    $("input[name='DoctorId']").val(id)
+                    $("#DoctorName").val(ui.item.value)
+                    return false;
+                }
+            });
+        })
+    </script>
+}
