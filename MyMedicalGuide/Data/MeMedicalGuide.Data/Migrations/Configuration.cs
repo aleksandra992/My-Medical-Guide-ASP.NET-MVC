@@ -95,7 +95,6 @@ namespace MyMedicalGuide.Data.Migrations
                     UserName = "goran"
                 };
                 userManager.Create(userGoran);
-                userManager.AddToRole(userGoran.Id, "User");
 
                 var pacient = new Patient() { User = userGoran, SSN = "1111111111", CreatedOn = DateTime.Now };
 

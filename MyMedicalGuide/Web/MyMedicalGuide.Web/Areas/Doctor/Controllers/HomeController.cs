@@ -1,4 +1,5 @@
-﻿using MyMedicalGuide.Web.Controllers;
+﻿using MyMedicalGuide.Services.Contracts;
+using MyMedicalGuide.Web.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IPatientService patients;
+
+        public HomeController(IPatientService patients)
+        {
+            this.patients = patients;
+        }
+
         
     }
 }

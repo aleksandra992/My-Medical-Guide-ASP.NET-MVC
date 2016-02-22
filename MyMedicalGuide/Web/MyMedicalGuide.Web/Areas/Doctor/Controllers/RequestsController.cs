@@ -18,6 +18,7 @@ using MyMedicalGuide.Web.Controllers;
 
 namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
 {
+    [Authorize(Roles = "Doctor")]
     public class RequestsController : BaseController
     {
         private readonly IPatientRequestService requests;
@@ -61,14 +62,14 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
                 var entity = this.requests.GetById(patientRequest.Id);
 
                 var patient = this.patients.GetById(entity.UserId);
-                if (patient == null)
-                {
-                    patient = new MyMedicalGuide.Data.Models.Patient
-                    {
-                        Id = entity.UserId
-                    };
+                //if (patient == null)
+                //{
+                //    patient = new MyMedicalGuide.Data.Models.Patient
+                //    {
+                //        Id = entity.UserId
+                //    };
 
-                }
+                //}
 
                 this.doctors.AddPatient(entity.DoctorId, patient);
 
