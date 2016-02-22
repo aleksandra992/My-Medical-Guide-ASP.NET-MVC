@@ -2,11 +2,32 @@
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
     public class User : IdentityUser
     {
+        private ICollection<PatientRequest> patientRequests;
+
+        public User()
+        {
+
+            this.patientRequests = new HashSet<PatientRequest>();
+        }
+
+        public virtual ICollection<PatientRequest> PatientRequests
+        {
+            get
+            {
+                return this.patientRequests;
+            }
+            set
+            {
+                this.patientRequests = value;
+            }
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

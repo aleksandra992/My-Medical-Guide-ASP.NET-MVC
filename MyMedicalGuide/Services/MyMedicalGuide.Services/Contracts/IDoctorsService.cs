@@ -19,6 +19,7 @@
 
         IQueryable<Doctor> GetAllDoctorsFromDepartmentHospital(int hospitalId, int departmentId);
 
+        IQueryable<Doctor> GetDoctors(string filter);
 
     }
 }

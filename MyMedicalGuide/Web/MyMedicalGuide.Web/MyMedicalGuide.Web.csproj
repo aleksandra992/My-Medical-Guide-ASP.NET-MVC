@@ -223,12 +223,15 @@
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -242,6 +245,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\kendo\Flat\editor.png" />
     <Content Include="Content\kendo\Flat\imagebrowser.png" />
     <Content Include="Content\kendo\Flat\indeterminate.gif" />
@@ -324,6 +333,7 @@
     <Content Include="Content\kendo\textures\stripe6.png" />
     <Content Include="Content\kendo\textures\transparency.png" />
     <Content Include="Content\kendo\textures\transtexture.png" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -360,11 +370,14 @@
     <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DoctorGridViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\HospitalGridViewModel.cshtml" />
+    <Content Include="Areas\Patient\Views\Doctors\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -374,6 +387,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -416,6 +430,7 @@
     <Content Include="Views\Hospitals\All.cshtml" />
     <Content Include="Views\Hospitals\Details.cshtml" />
     <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,6 +446,7 @@
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />
+    <Folder Include="Views\AutoComplete\" />
     <Folder Include="Views\Doctors\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>

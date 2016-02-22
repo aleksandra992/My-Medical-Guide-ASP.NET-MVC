@@ -1,0 +1,77 @@
+﻿@model MyMedicalGuide.Web.Models.Patients.PatientRequestInputModel
+    <div class="card-panel">
+        <div class="row">
+            @using (Html.BeginForm("Add", "Doctors", new { area = "Patient" }, FormMethod.Post, new { @class = "col s12", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-account-circle prefix active"></i>
+                        <input id="DoctorName" type="text" class="validate valid">
+                        <input name="DoctorId" type="hidden" />
+                        <label for="DoctorName" class="active">Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-question-answer prefix"></i>
+                        @Html.TextAreaFor(m => m.Message, new { @class = "materialize-textarea validate", length = "300", @id = "message4" })
+                        @Html.LabelFor(m => m.Message)
+                        @Html.ValidationMessageFor(m => m.Message, "", new { @class = "red" })
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    @section styles{
+        @Styles.Render("~/Content/JqueryUICss")
+    }
+
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryui")
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("#DoctorName").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/AutoComplete/AutoCompleteDoctors",
+                            type: "POST",
+                            dataType: "json",
+                            data: { term: $("#DoctorName").val() },
+                            success: function (data) {
+                                console.log(data);
+                                debugger;
+                                response($.map(data, function (item) {
+                                    debugger;
+                                    return { label: item.Name, value: item.Name, id: item.Id };
+                                }))
+                            }
+                        })
+                    },
+                    messages: {
+                        noResults: "No results found!"
+                    },
+                    select: function (event, ui) {
+                        var id = ui.item.id;
+                        $("input[name='DoctorId']").val(id)
+                        $("#DoctorName").val(ui.item.value)
+                        return false;
+                    }
+                });
+            })
+        </script>
+    }

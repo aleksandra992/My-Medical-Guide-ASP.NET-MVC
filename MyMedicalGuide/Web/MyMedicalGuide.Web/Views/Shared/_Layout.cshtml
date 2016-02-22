@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Alert")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("KendoStyles", required: false)
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("kendo", required: false)
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/Alert")
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,11 +22,17 @@
 <body>
     <div class="navbar-fixed">
 
-        @if (this.TempData["AppointmentAddedMsg"] != null)
-            {
-            <div class="alert">
-                @this.TempData["AppointmentAddedMsg"]
-            </div>
+        @if (this.TempData["InfoMsg"] != null)
+        {
+            <script>
+                swal("@this.TempData["InfoMsg"]", "", "success")
+            </script>
+        }
+        @if (this.TempData["ErrorMsg"] != null)
+        {
+            <script>
+                swal("@this.TempData["ErrorMsg"]", "", "error")
+            </script>
         }
         <nav>
             <div class="nav-wrapper">
@@ -78,6 +87,7 @@
 
 
     @RenderSection("scripts", required: false)
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
