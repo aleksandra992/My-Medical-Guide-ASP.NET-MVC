@@ -223,12 +223,14 @@
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -360,6 +362,7 @@
     <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DoctorGridViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\HospitalGridViewModel.cshtml" />
+    <Content Include="Areas\Patient\Views\Doctors\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -416,6 +419,7 @@
     <Content Include="Views\Hospitals\All.cshtml" />
     <Content Include="Views\Hospitals\Details.cshtml" />
     <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
