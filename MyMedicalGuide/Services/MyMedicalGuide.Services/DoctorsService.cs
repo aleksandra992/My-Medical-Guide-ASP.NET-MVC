@@ -53,5 +53,21 @@ namespace MyMedicalGuide.Services
                  .All()
                  .Where(x => x.HospitalId == hospitalId && x.DepartmentId == departmentId);
         }
+
+        public IQueryable<Doctor> GetDoctors(string filter)
+        {
+            string[] fullName = filter.Split(' ');
+            string firstName = fullName[0];
+            string lastName = null;
+            if (fullName.Length > 1)
+            {
+                lastName = fullName[1];
+            }
+
+            return this.doctorsrepo
+                 .All()
+                 .Where(x => (x.User.FirstName.Contains(firstName) &&
+                 (lastName != null ? x.User.LastName.Contains(lastName) : true)));
+        }
     }
 }

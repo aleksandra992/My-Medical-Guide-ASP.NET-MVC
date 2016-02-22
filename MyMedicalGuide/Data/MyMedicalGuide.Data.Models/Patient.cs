@@ -18,6 +18,7 @@ namespace MyMedicalGuide.Data.Models
             this.doctors = new HashSet<Doctor>();
             this.hospitals = new HashSet<Hospital>();
         }
+
         [ForeignKey("User")]
         public override string Id
         {
@@ -73,5 +74,6 @@ namespace MyMedicalGuide.Data.Models
                 this.hospitals = value;
             }
         }
+        
     }
 }

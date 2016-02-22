@@ -12,11 +12,14 @@ namespace MyMedicalGuide.Data.Models
 
         private ICollection<CustomAppointment> customAppointments;
 
+        private ICollection<PatientRequest> patientRequests;
+
         public Doctor()
         {
             this.patients = new HashSet<Patient>();
             this.appointments = new HashSet<Appointment>();
             this.customAppointments = new HashSet<CustomAppointment>();
+            this.patientRequests = new HashSet<PatientRequest>();
         }
 
         [ForeignKey("User")]
@@ -75,6 +78,18 @@ namespace MyMedicalGuide.Data.Models
             set
             {
                 this.customAppointments = value;
+            }
+        }
+
+        public virtual ICollection<PatientRequest> PatientRequests
+        {
+            get
+            {
+                return this.patientRequests;
+            }
+            set
+            {
+                this.patientRequests = value;
             }
         }
     }
