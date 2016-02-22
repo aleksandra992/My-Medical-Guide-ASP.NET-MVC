@@ -227,6 +227,7 @@
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -248,6 +249,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Departments\1.jpg" />
+    <Content Include="Content\Departments\2.jpg" />
+    <Content Include="Content\Departments\3.jpg" />
+    <Content Include="Content\Departments\4.jpg" />
+    <Content Include="Content\Departments\5.jpg" />
+    <Content Include="Content\Departments\6.jpg" />
+    <Content Include="Content\Hospitals\1.jpg" />
+    <Content Include="Content\Hospitals\2.jpg" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.css" />
@@ -380,6 +389,8 @@
     <Content Include="Areas\Doctor\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Doctor\Views\Shared\EditorTemplates\RequestViewModel.cshtml" />
     <Content Include="Areas\Doctor\Views\Patients\All.cshtml" />
+    <Content Include="Content\Hospitals\Thumbs.db" />
+    <Content Include="Content\Departments\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -451,7 +462,9 @@
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Patient\Models\" />
+    <Folder Include="Areas\Patient\Views\Profile\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
+    <Folder Include="Content\Documents\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />
     <Folder Include="Views\AutoComplete\" />

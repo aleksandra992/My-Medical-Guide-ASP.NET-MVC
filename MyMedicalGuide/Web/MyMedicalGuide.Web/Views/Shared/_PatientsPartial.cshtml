@@ -2,9 +2,10 @@
 <table>
     <thead>
         <tr>
-            <th data-field="id">First Name</th>
-            <th data-field="name">Last Name</th>
-            <th data-field="price">SSN</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>SSN</th>
+            <th>Add Documents</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,16 @@
                 <td>@patient.FirstName</td>
                 <td>@patient.LastName</td>
                 <td>@patient.SSN</td>
+                <td>
+                    <form action="/Patients/AddDocuments/@patient.Id" method="post" enctype="multipart/form-data">
+
+                        <label for="document">Document</label>
+                        <input type="file" name="document" id="document" />
+
+                        <input type="submit" value="Upload" />
+                    </form>
+                </td>
+                <td><a href="#"></a></td>
             </tr>
         }
     </tbody>

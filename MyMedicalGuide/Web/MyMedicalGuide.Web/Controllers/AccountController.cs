@@ -12,6 +12,7 @@ using MyMedicalGuide.Web.Models;
 using MyMedicalGuide.Data.Models;
 using MyMedicalGuide.Web.Models.Account;
 using MyMedicalGuide.Services.Contracts;
+using System.Data.Entity.Validation;
 
 namespace MyMedicalGuide.Web.Controllers
 {
@@ -157,23 +158,25 @@ namespace MyMedicalGuide.Web.Controllers
             {
                 var user = new User
                 {
-                    UserName = model.Email,
+                    UserName = model.Username,
                     Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber,
+
                 };
 
-
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = UserManager.Create(user, model.Password);
                 var userId = user.Id;
                 var patient = new Patient
                 {
-                    User = user,
+                    Id = userId,
                     Avatar = model.Avatar,
                     SSN = model.SSN
                 };
+
                 var patientId = patientService.Add(patient);
 
-                if (result.Succeeded && patientId != null)
+
+                if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
