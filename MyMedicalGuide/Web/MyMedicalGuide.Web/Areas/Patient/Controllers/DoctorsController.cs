@@ -11,9 +11,9 @@ using System.Web.Mvc;
 
 namespace MyMedicalGuide.Web.Areas.Patient.Controllers
 {
+    [Authorize]
     public class DoctorsController : BaseController
     {
-
         private readonly IPatientRequestService patientRequest;
 
         public DoctorsController(IPatientRequestService patientRequest)

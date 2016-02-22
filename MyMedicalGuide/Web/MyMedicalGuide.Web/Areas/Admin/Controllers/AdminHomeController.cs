@@ -17,6 +17,7 @@ using MyMedicalGuide.Web.Controllers;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminHomeController : BaseController
     {
         private readonly IHospitalsService hospitals;

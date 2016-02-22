@@ -12,6 +12,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
     using Services.Contracts;
     using Models.Doctors;
     using Data.Models;
+    [Authorize]
     public class AppointmentsController : BaseController
     {
         private readonly IDoctorsService doctorsService;

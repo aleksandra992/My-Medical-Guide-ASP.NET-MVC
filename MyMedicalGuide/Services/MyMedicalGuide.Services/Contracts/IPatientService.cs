@@ -1,4 +1,5 @@
 ﻿using MyMedicalGuide.Data.Models;
+using System.Linq;
 
 namespace MyMedicalGuide.Services.Contracts
 {
@@ -7,5 +8,7 @@ namespace MyMedicalGuide.Services.Contracts
         string Add(Patient patient);
 
         Patient GetById(string id);
+
+        IQueryable<Patient> GetAllByDoctorId(string doctorId);
     }
 }

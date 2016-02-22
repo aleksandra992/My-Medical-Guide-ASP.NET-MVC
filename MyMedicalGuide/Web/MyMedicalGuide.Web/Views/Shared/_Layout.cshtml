@@ -49,13 +49,13 @@
                 </ul>
                 @if (User.IsInRole("Admin"))
                 {
-                    <ul class="right hide-on-med-and-down col col s8 m8 l8">
+                    <ul class=" hide-on-med-and-down col col s8 m8 l8">
                         <li>
                             <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#\" data-activates="profile-dropdown">My Panel<i style="position:relative; top:-15px" class="mdi-navigation-arrow-drop-down right "></i></a>
                             <ul id="profile-dropdown" class="dropdown-content active" style="display: none;">
                                 <li>
                                     @Html.ActionLink("Manage", "Index", "AdminHome", new { area = "Admin" }, null)
-                                    
+
                                 </li>
                             </ul>
                         </li>
@@ -64,19 +64,19 @@
 
                 @if (User.IsInRole("Doctor"))
                 {
-                    <ul class="right hide-on-med-and-down col col s8 m8 l8">
+                    <ul class="hide-on-med-and-down col col s8 m8 l8">
                         <li>
                             <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#\" data-activates="profile-dropdown">My Panel<i style="position:relative; top:-15px" class="mdi-navigation-arrow-drop-down right "></i></a>
                             <ul id="profile-dropdown" class="dropdown-content active" style="display: none;">
                                 <li>
                                     @Html.ActionLink("Requests", "Index", "Requests", new { area = "Doctor" }, null)
-                                    @Html.ActionLink("Patients", "Index", "Patients", new { area = "Admin" }, null)
+                                    @Html.ActionLink("Patients", "All", "Patients", new { area = "Doctor" }, null)
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 }
-                
+
                 <ul class="side-nav" id="mobile-demo">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>

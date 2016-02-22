@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MyMedicalGuide.Web.Models.Patients.PatientViewModel>
+<table>
+    <thead>
+        <tr>
+            <th data-field="id">First Name</th>
+            <th data-field="name">Last Name</th>
+            <th data-field="price">SSN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.FirstName</td>
+                <td>@patient.LastName</td>
+                <td>@patient.SSN</td>
+            </tr>
+        }
+    </tbody>
+</table>
