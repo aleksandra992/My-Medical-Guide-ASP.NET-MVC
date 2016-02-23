@@ -20,6 +20,7 @@ namespace MyMedicalGuide.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
         public ActionResult AutoCompleteDoctors(string term)
         {
             var entity = this.doctors.GetDoctors(term);

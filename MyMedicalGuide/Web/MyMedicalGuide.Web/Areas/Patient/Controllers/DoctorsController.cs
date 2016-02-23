@@ -29,6 +29,7 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(PatientRequestInputModel request)
         {
             if (!this.ModelState.IsValid)

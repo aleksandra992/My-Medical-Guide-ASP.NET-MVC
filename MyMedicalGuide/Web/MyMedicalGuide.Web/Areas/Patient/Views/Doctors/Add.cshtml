@@ -52,7 +52,10 @@
                         url: "/AutoComplete/AutoCompleteDoctors",
                         type: "POST",
                         dataType: "json",
-                        data: { term: $("#DoctorName").val() },
+                        data: {
+                            term: $("#DoctorName").val(),
+                            __RequestVerificationToken: $("input[name = '__RequestVerificationToken']").val()
+                        },
                         success: function (data) {
                             console.log(data);
                             debugger;
