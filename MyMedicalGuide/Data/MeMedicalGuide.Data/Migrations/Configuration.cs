@@ -51,10 +51,6 @@ namespace MyMedicalGuide.Data.Migrations
                 var userRole = new IdentityRole { Name = "User" };
                 roleManager.Create(userRole);
 
-
-                var patientRole = new IdentityRole { Name = "Patient" };
-                roleManager.Create(patientRole);
-
                 context.SaveChanges();
             }
         }
@@ -99,7 +95,6 @@ namespace MyMedicalGuide.Data.Migrations
                     UserName = "goran"
                 };
                 userManager.Create(userGoran);
-                userManager.AddToRole(userGoran.Id, "Patient");
 
                 var pacient = new Patient() { User = userGoran, SSN = "1111111111", CreatedOn = DateTime.Now };
 

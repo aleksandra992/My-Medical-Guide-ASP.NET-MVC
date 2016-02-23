@@ -42,12 +42,12 @@
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
-                    @if (User.IsInRole("Patient"))
+                    @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Find Doctor", "Add", "Doctors", new { area = "Patient" }, null)</li>
                     }
                 </ul>
-                @if (User.IsInRole("Patient"))
+                @if (Request.IsAuthenticated)
                 {
                     <ul class="hide-on-med-and-down col col s8 m8 l8">
                         <li>
