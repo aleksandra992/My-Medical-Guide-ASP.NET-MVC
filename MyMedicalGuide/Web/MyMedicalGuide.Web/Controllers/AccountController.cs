@@ -164,7 +164,9 @@ namespace MyMedicalGuide.Web.Controllers
 
                 };
 
-                var result = UserManager.Create(user, model.Password);
+                var result = this.UserManager.Create(user, model.Password);
+
+                this.UserManager.AddToRole(user.Id, "Patient");
                 var userId = user.Id;
                 var patient = new Patient
                 {
