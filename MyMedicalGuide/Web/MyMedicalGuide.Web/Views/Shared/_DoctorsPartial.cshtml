@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MyMedicalGuide.Web.Models.Doctors.DoctorTableViewModel>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Number of patients</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.FirstName</td>
+                <td>@doctor.LastName</td>
+                <td>@doctor.PhoneNumber</td>
+                <td>@doctor.NumOfPatients</td>
+            </tr>
+        }
+    </tbody>
+</table>

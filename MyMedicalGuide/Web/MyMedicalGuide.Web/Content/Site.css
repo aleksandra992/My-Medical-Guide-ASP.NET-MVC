@@ -1,0 +1,335 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+
+/* Set width on the form input elements since ey're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    color: #ee6e73;
+    background-color: #ee6e73;
+}
+
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.button-collapse {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255,255,255,.9);
+}
+
+    .parallax-container .section {
+        width: 100%;
+    }
+
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+    .icon-block .material-icons {
+        font-size: inherit;
+    }
+
+footer.page-footer {
+    margin: 0;
+}
+
+
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* start editing from here */
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+/* text align right */
+.txt-lt {
+    text-align: left;
+}
+/* text align left */
+.txt-center {
+    text-align: center;
+}
+/* text align center */
+.float-rt {
+    float: right;
+}
+/* float right */
+.float-lt {
+    float: left;
+}
+/* float left */
+.clear {
+    clear: both;
+}
+/* clear float */
+.pos-relative {
+    position: relative;
+}
+/* Position Relative */
+.pos-absolute {
+    position: absolute;
+}
+/* Position Absolute */
+.vertical-base {
+    vertical-align: baseline;
+}
+/* vertical align baseline */
+.vertical-top {
+    vertical-align: top;
+}
+/* vertical align top */
+.underline {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    margin: 0 0 20px 0;
+}
+/* Add 5px bottom padding and a underline */
+nav.vertical ul li {
+    display: block;
+}
+/* vertical menu */
+nav.horizontal ul li {
+    display: inline-block;
+}
+/* horizontal menu */
+img {
+    max-width: 100%;
+}
+/*end reset*/
+
+.wrap {
+    margin: 0 auto;
+    width: 96%;
+}
+
+.main {
+    text-align: center;
+    margin: 4% 0 0%;
+}
+
+h1 {
+    font-family: 'Condiment', cursive;
+    margin-top: 20px;
+    color: #EA3C4D;
+    font-size: 2.4em;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+p {
+    color: #999;
+    font-size: 0.9em;
+    line-height: 1.8em;
+}
+/*footer*/
+.footer {
+    font-family: "Century Gothic";
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+    .footer p {
+        font-size: 1em;
+        color: #999;
+    }
+
+    .footer a {
+        color: #EA3C4D;
+    }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+/*media queries*/
+@media all and (max-width:1366px) and (min-width:1280px) {
+    .wrap {
+        width: 90%;
+    }
+}
+
+@media all and (max-width:1280px) and (min-width:1024px) {
+    .wrap {
+        width: 90%;
+    }
+
+    .page {
+        font-size: 1.4em;
+    }
+}
+
+@media all and (max-width:1024px) and (min-width:800px) {
+    .wrap {
+        width: 90%;
+    }
+
+    .main {
+        margin: 6% 0 0%;
+    }
+}
+
+@media all and (max-width:800px) and (min-width:640px) {
+    .wrap {
+        width: 90%;
+    }
+
+    .main {
+        margin: 8% 0 0%;
+    }
+}
+
+@media all and (max-width:640px) and (min-width:480px) {
+    .wrap {
+        width: 90%;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 1.8em;
+    }
+
+    .main {
+        margin: 4% 0 0%;
+    }
+}
+
+@media all and (max-width:480px) and (min-width:320px) {
+    .wrap {
+        width: 90%;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 1.4em;
+    }
+
+    .main {
+        margin: 3% 0 0%;
+    }
+}
+
+@media all and (max-width:320px) {
+    .wrap {
+        width: 90%;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 1.0em;
+    }
+
+    .main {
+        margin: 3% 0 0%;
+    }
+
+    p {
+        margin-top: 2%;
+        line-height: 1.4em;
+    }
+
+    .footer {
+        position: relative;
+        text-align: right;
+        right: 0;
+        bottom: 0;
+    }
+
+        .footer p {
+            font-size: 0.9em;
+        }
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative !important;
+    left: 0px !important;
+    visibility: visible !important;
+}

@@ -1,0 +1,82 @@
+﻿@model MyMedicalGuide.Web.Models.Doctors.DoctorGridViewModel
+
+<h5>Add doctor</h5>
+<hr />
+@Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-action-account-circle prefix"></i>
+        @Html.TextBoxFor(m => m.FirstName)
+
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-action-account-circle prefix"></i>
+        @Html.TextBoxFor(m => m.LastName)
+
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 right">
+        
+        @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.Departments, "Id", "Name"))
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-action-account-circle prefix"></i>
+        @Html.TextBoxFor(m => m.Username)
+
+        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-communication-email prefix"></i>
+        @Html.TextBoxFor(m => m.Email)
+
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-action-lock-outline prefix"></i>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+
+        <i class="mdi-action-lock-outline prefix"></i>
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="mdi-action-settings-phone prefix"></i>
+        @Html.TextBoxFor(m => m.PhoneNumber)
+
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+
+    </div>
+</div>
+<script>
+     $('select').material_select();
+</script>

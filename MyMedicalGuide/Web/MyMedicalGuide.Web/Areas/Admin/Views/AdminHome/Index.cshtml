@@ -1,0 +1,49 @@
+﻿
+@(Html.Kendo().Grid<MyMedicalGuide.Web.Models.Hospitals.HospitalGridViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Template(@<text>
+        @Html.ActionLink("AdminHome", "Index", "AdminHome", new { area = "Admin", hospitalId = @item.Id }, null)
+        </text>)
+  .ClientTemplate("<a href='/Admin/Hospitals/Details/#= Id#'>Manage</a>")
+  .Title("Manage");
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Address);
+          columns.Bound(c =>  c.CreatedOn);
+          columns.Bound(c => c.NumOfDepartments);
+          columns.Bound(c => c.NumOfDoctors);
+          columns.Bound(c => c.NumOfPacients);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Hospitals_Read", "AdminHome"))
+          .Create(create => create.Action("Hospitals_Create", "AdminHome"))
+          .Update(update => update.Action("Hospitals_Update", "AdminHome"))
+          .Destroy(destroy => destroy.Action("Hospitals_Destroy", "AdminHome"))
+      )
+)
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/kendo")
+
+}
+@section KendoStyles{
+    @Styles.Render("~/Content/kendo")
+}
