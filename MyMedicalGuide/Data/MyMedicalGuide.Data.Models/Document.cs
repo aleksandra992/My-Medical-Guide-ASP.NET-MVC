@@ -26,5 +26,7 @@ namespace MyMedicalGuide.Data.Models
 
         public string RealFileName { get; set; }
 
+        public string Extension { get; set; }
+
     }
 }

@@ -16,8 +16,9 @@
                 <td>@patient.LastName</td>
                 <td>@patient.SSN</td>
                 <td>
-                    @Html.AntiForgeryToken()
+                   
                     <form action="/Patients/AddDocuments/@patient.Id" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
                         <input type="file" name="Document" id="document" />
                         <input type="text" name="DoctorFileName" id="DoctorFileName" />
                         <input type="submit" value="Upload" />

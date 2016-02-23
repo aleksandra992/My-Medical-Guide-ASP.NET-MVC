@@ -12,5 +12,10 @@ namespace MyMedicalGuide.Services.Contracts
         void Add(Document document);
 
         IQueryable<Document> GetDocumentsByPatientId(string patientId);
+
+        string GetDocumentNameById(int id);
+
+        string GetDocumentExtensionById(int id);
+
     }
 }

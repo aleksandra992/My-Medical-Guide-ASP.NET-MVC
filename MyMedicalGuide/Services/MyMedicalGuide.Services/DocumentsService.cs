@@ -11,7 +11,6 @@ namespace MyMedicalGuide.Services
 {
     public class DocumentsService : IDocumentsService
     {
-
         private readonly IRepository<Document, int> documents;
 
         public DocumentsService(IRepository<Document, int> documents)
@@ -23,6 +22,16 @@ namespace MyMedicalGuide.Services
         {
             this.documents.Add(document);
             this.documents.SaveChanges();
+        }
+
+        public string GetDocumentExtensionById(int id)
+        {
+            return this.documents.GetById(id).Extension;
+        }
+
+        public string GetDocumentNameById(int id)
+        {
+            return this.documents.GetById(id).FileName.ToString();
         }
 
         public IQueryable<Document> GetDocumentsByPatientId(string patientId)

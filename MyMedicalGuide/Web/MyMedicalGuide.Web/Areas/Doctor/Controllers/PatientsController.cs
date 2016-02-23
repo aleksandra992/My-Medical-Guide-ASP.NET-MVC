@@ -16,7 +16,7 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
     [Authorize(Roles = "Doctor")]
     public class PatientsController : Controller
     {
-        private const string RequestsPath = "~/App_Data/Uploads/patientDocuments/";
+        private const string RequestsPath = "~/App_Data/Uploads/";
 
         private readonly IPatientService patients;
 
@@ -51,7 +51,8 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
             {
                 DoctorId = doctorId,
                 PatientId = id,
-                RealFileName = doctorFileName
+                RealFileName = doctorFileName,
+                Extension = Path.GetExtension(document.FileName)
             };
 
             this.documents.Add(documentDb);
@@ -60,10 +61,10 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
             var documentId = documentDb.Id;
 
 
-            var folder = documentId % 10;
+            var folder = "patientDocuments";
             var realFileName = fileName.ToString();
 
-            var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + Path.GetExtension(realFileName));
+            var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + Path.GetExtension(document.FileName));
             document.SaveAs(path);
 
 

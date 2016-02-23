@@ -13,6 +13,8 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
     [Authorize(Roles = "Patient")]
     public class ProfileController : Controller
     {
+        private const string DocumentsPath = "~/App_Data/Uploads/patientDocuments";
+
         private readonly IDocumentsService documents;
 
         public ProfileController(IDocumentsService documents)
@@ -30,26 +32,16 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
             return this.View(documentsViewModel);
         }
 
-        //public FileResult Download(string FileID)
-        //{
-        //    int CurrentFileID = Convert.ToInt32(FileID);
-        //    var filesCol = obj.GetFiles();
-        //    string CurrentFileName = (from fls in filesCol
-        //                              where fls.FileId == CurrentFileID
-        //                              select fls.FilePath).First();
+        [HttpGet]
+        public FileResult DocumentDownload(int id)
+        {
+            var documentName = DocumentsPath + "/" + this.documents.GetDocumentNameById(id) + this.documents.GetDocumentExtensionById(id);
 
-        //    string contentType = string.Empty;
 
-        //    if (CurrentFileName.Contains(".pdf"))
-        //    {
-        //        contentType = "application/pdf";
-        //    }
+            string contentType = "application/" + this.documents.GetDocumentExtensionById(id).Substring(1);
 
-        //    else if (CurrentFileName.Contains(".docx"))
-        //    {
-        //        contentType = "application/docx";
-        //    }
-        //    return File(CurrentFileName, contentType, CurrentFileName);
-        //}
+            return new FilePathResult(documentName, contentType);
+
+        }
     }
 }
