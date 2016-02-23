@@ -28,6 +28,8 @@
 
         public virtual IDbSet<Department> Departments { get; set; }
 
+        public virtual IDbSet<PatientRequest> PatientRequests { get; set; }
+
         public static MyMedicalGuideDbContext Create()
         {
             return new MyMedicalGuideDbContext();

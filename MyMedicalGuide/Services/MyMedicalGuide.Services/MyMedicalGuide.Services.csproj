@@ -62,11 +62,13 @@
     <Compile Include="Contracts\IDepartmentsService.cs" />
     <Compile Include="Contracts\IDoctorsService.cs" />
     <Compile Include="Contracts\IHospitalsService.cs" />
+    <Compile Include="Contracts\IPatientRequestService.cs" />
     <Compile Include="Contracts\IPatientService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="DepartmentsService.cs" />
     <Compile Include="DoctorsService.cs" />
     <Compile Include="HospitalsService.cs" />
+    <Compile Include="PatientRequestService.cs" />
     <Compile Include="PatientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />

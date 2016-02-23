@@ -20,6 +20,7 @@ using MyMedicalGuide.Web.Models.Departments;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HospitalsController : BaseController
     {
         private readonly IHospitalsService hospitals;

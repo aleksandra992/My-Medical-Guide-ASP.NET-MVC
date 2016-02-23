@@ -17,6 +17,7 @@ using MyMedicalGuide.Web.Controllers;
 
 namespace MyMedicalGuide.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminHomeController : BaseController
     {
         private readonly IHospitalsService hospitals;
@@ -34,7 +35,7 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
         public ActionResult Hospitals_Read([DataSourceRequest]DataSourceRequest request)
         {
             IQueryable<Hospital> hospitals = this.hospitals.GetAll();
-            DataSourceResult result = hospitals.AsQueryable().To<HospitalGridViewModel>()
+            DataSourceResult result = hospitals.To<HospitalGridViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);

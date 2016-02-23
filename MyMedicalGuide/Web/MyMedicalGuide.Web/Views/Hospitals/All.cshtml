@@ -1,5 +1,66 @@
-﻿@model IEnumerable<MyMedicalGuide.Web.Models.Hospitals.BasicHospitalViewModel>
-<div class="row">
-    @Html.DisplayForModel(Model);
+﻿@model MyMedicalGuide.Web.Models.Home.IndexViewModel
+<div class="container">
+    </br>
+    <div class="row">
+        @using (Html.BeginForm("All", "Hospitals", FormMethod.Get))
+        {
+            <div class="row" id="search-row">
+                <div class="input-field col offset-s3 s4">
+                    <i class="mdi-action-search prefix"></i>
+                    <input type="text" name="search" id="searchInput" />
+                    <label>Search</label>
+                </div>
+                <div class="col s2">
+                    <button id="btnSearch" class="btn btn-search red lighten-2">Search</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        @foreach (var hospital in Model.Hospitals)
+        {
+            <div class="col s12 m6 l4">
+                <div class="blog-card">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a href=@hospital.Url><img src=@hospital.Image alt="department-img"></a>
+                        </div>
+                        <div class="card-content">
+                            <span>@hospital.Address</span>
+                            <h4 class="card-title grey-text text-darken-4">
+                                <a href="#" class="grey-text text-darken-4">@hospital.Name</a>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div class="text-center">
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li><a href="/Hospitals/All/@(Model.CurrentPage - 1)">&laquo;</a></li>
+        }
+
+        @for (int i = 1; i < @Model.TotalPages + 1; i++)
+        {
+            var className = string.Empty;
+            if (@Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class=@className><a href="/Hospitals/All/@i">@i</a></li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li><a href="/Hospitals/All/@(Model.CurrentPage + 1)">&raquo;</a></li>
+        }
+    </ul>
 </div>
 

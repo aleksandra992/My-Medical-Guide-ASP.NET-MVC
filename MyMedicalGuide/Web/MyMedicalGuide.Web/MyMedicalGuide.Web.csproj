@@ -221,15 +221,22 @@
     <Compile Include="Areas\AdminHospital\AdminHospitalAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\PatientsController.cs" />
+    <Compile Include="Areas\Doctor\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
+
     <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -243,6 +250,20 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Departments\1.jpg" />
+    <Content Include="Content\Departments\2.jpg" />
+    <Content Include="Content\Departments\3.jpg" />
+    <Content Include="Content\Departments\4.jpg" />
+    <Content Include="Content\Departments\5.jpg" />
+    <Content Include="Content\Departments\6.jpg" />
+    <Content Include="Content\Hospitals\1.jpg" />
+    <Content Include="Content\Hospitals\2.jpg" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\kendo\Flat\editor.png" />
     <Content Include="Content\kendo\Flat\imagebrowser.png" />
     <Content Include="Content\kendo\Flat\indeterminate.gif" />
@@ -263,10 +284,12 @@
     <Content Include="Content\kendo\images\kendoui.svg" />
     <Content Include="Content\kendo\images\wp8_icons.png" />
     <Content Include="Content\kendo\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\kendo.common-material.min.css" />
     <Content Include="Content\kendo\kendo.common-nova.min.css" />
     <Content Include="Content\kendo\kendo.common.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.nova.min.css" />
+    <Content Include="Content\kendo\kendo.nova.min.css" />
     <Content Include="Content\kendo\Material\editor.png" />
     <Content Include="Content\kendo\Material\imagebrowser.png" />
     <Content Include="Content\kendo\Material\indeterminate.gif" />
@@ -325,6 +348,7 @@
     <Content Include="Content\kendo\textures\stripe6.png" />
     <Content Include="Content\kendo\textures\transparency.png" />
     <Content Include="Content\kendo\textures\transtexture.png" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -361,11 +385,20 @@
     <Content Include="Areas\Admin\Views\Hospitals\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DoctorGridViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\HospitalGridViewModel.cshtml" />
+    <Content Include="Areas\Patient\Views\Doctors\Add.cshtml" />
+    <Content Include="Areas\Doctor\Views\Requests\Index.cshtml" />
+    <Content Include="Areas\Doctor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Doctor\Views\Shared\EditorTemplates\RequestViewModel.cshtml" />
+    <Content Include="Areas\Doctor\Views\Patients\All.cshtml" />
+    <Content Include="Content\Hospitals\Thumbs.db" />
+    <Content Include="Content\Departments\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -375,6 +408,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -417,6 +451,9 @@
     <Content Include="Views\Hospitals\All.cshtml" />
     <Content Include="Views\Hospitals\Details.cshtml" />
     <Content Include="Views\Shared\_DoctorsPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\_PatientsPartial.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,10 +466,14 @@
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Doctor\Views\Shared\" />
     <Folder Include="Areas\Patient\Models\" />
+    <Folder Include="Areas\Patient\Views\Profile\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
+    <Folder Include="Content\Documents\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />
+    <Folder Include="Views\AutoComplete\" />
     <Folder Include="Views\Doctors\" />
+    <Folder Include="Views\Requests\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

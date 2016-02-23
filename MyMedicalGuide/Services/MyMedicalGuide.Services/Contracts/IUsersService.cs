@@ -10,5 +10,7 @@ namespace MyMedicalGuide.Services.Contracts
     public interface IUsersService
     {
         void Create(User user, string role);
+
+        User GetUserById(string id);
     }
 }
