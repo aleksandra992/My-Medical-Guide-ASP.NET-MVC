@@ -61,6 +61,7 @@
     <Compile Include="CustomAppointment.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Doctor.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="Hospital.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientRequest.cs" />

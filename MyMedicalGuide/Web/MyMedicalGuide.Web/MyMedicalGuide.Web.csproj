@@ -391,6 +391,7 @@
     <Content Include="Areas\Doctor\Views\Patients\All.cshtml" />
     <Content Include="Content\Hospitals\Thumbs.db" />
     <Content Include="Content\Departments\Thumbs.db" />
+    <Content Include="Areas\Patient\Views\Profile\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -455,7 +456,16 @@
     <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\10\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\1\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\2\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\3\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\4\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\5\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\6\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\7\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\8\" />
+    <Folder Include="App_Data\Uploads\patientDocuments\9\" />
     <Folder Include="Areas\AdminHospital\Controllers\" />
     <Folder Include="Areas\AdminHospital\Models\" />
     <Folder Include="Areas\AdminHospital\Views\Shared\" />
@@ -463,7 +473,6 @@
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Patient\Models\" />
-    <Folder Include="Areas\Patient\Views\Profile\" />
     <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Documents\" />
     <Folder Include="Content\Images\" />

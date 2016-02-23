@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
+using MyMedicalGuide.Data.Models;
 using MyMedicalGuide.Services.Contracts;
 using MyMedicalGuide.Web.Infrastructure.Mapping;
+using MyMedicalGuide.Web.Models.Documents;
 using MyMedicalGuide.Web.Models.Patients;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,16 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
     [Authorize(Roles = "Doctor")]
     public class PatientsController : Controller
     {
+        private const string RequestsPath = "~/App_Data/Uploads/patientDocuments/";
+
         private readonly IPatientService patients;
 
-        public PatientsController(IPatientService patients)
+        private readonly IDocumentsService documents;
+
+        public PatientsController(IPatientService patients, IDocumentsService documents)
         {
             this.patients = patients;
+            this.documents = documents;
         }
 
         public ActionResult All()
@@ -35,16 +42,30 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
             return this.PartialView("_PatientsPartial", patientsViewModel);
         }
 
-        public ActionResult AddDocuments(string id, HttpPostedFileBase document)
+        [ValidateAntiForgeryToken]
+        public ActionResult AddDocuments(string id, HttpPostedFileBase document, string doctorFileName)
         {
+            string doctorId = this.User.Identity.GetUserId();
 
-            string directory = this.Server.MapPath(@"\Content\Documents\");
-
-            if (document != null && document.ContentLength > 0)
+            var documentDb = new Document()
             {
-                var fileName = Guid.NewGuid() + "_" + id;
-                document.SaveAs(Path.Combine(directory, fileName));
-            }
+                DoctorId = doctorId,
+                PatientId = id,
+                RealFileName = doctorFileName
+            };
+
+            this.documents.Add(documentDb);
+
+            var fileName = documentDb.FileName;
+            var documentId = documentDb.Id;
+
+
+            var folder = documentId % 10;
+            var realFileName = fileName.ToString();
+
+            var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + Path.GetExtension(realFileName));
+            document.SaveAs(path);
+
 
             this.TempData["InfoMsg"] = "Successfully uploaded";
             return this.Redirect("/Doctor/Patients/All");

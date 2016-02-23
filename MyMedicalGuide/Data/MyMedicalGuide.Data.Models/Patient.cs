@@ -12,11 +12,14 @@ namespace MyMedicalGuide.Data.Models
 
         private ICollection<Hospital> hospitals;
 
+        private ICollection<Document> documents;
+
         public Patient()
         {
             this.reports = new HashSet<Report>();
             this.doctors = new HashSet<Doctor>();
             this.hospitals = new HashSet<Hospital>();
+            this.documents = new HashSet<Document>();
         }
 
         [ForeignKey("User")]
@@ -74,6 +77,19 @@ namespace MyMedicalGuide.Data.Models
                 this.hospitals = value;
             }
         }
-        
+
+        public virtual ICollection<Document> Documents
+        {
+            get
+            {
+                return this.documents;
+            }
+            set
+            {
+                this.documents = value;
+            }
+        }
+
+
     }
 }

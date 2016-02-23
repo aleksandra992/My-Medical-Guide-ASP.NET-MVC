@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MyMedicalGuide.Web.Models.Documents.DocumentViewModel>
+<ul id="projects-collection" class="collection">
+    <li class="collection-item avatar">
+        <i class="mdi-file-folder circle light-blue darken-2"></i>
+        <span class="collection-header">Documents</span>
+        <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+    </li>
+    @foreach (var document in Model)
+    {
+        <li class="collection-item">
+            <div class="row">
+                <div class="col s6">
+                    <p class="collections-title">@document.File</p>
+                </div>
+                <div class="col s3">
+                    <span class="task-cat cyan">@document.DoctorName</span>
+                </div>
+                <div class="col s3">
+                    <span class="task-cat cyan">@document.CreatedOn</span>
+                </div>
+            </div>
+        </li>
+    }
+
+</ul>
