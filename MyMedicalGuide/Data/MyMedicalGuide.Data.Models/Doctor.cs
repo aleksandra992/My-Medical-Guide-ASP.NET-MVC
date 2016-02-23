@@ -1,5 +1,6 @@
 ﻿using MyMedicalGuide.Data.Common.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyMedicalGuide.Data.Models
@@ -19,6 +20,7 @@ namespace MyMedicalGuide.Data.Models
             this.customAppointments = new HashSet<CustomAppointment>();
         }
 
+        [Required]
         [ForeignKey("User")]
         public override string Id
         {

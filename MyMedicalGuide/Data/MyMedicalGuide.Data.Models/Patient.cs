@@ -1,5 +1,6 @@
 ﻿using MyMedicalGuide.Data.Common.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyMedicalGuide.Data.Models
@@ -18,6 +19,8 @@ namespace MyMedicalGuide.Data.Models
             this.doctors = new HashSet<Doctor>();
             this.hospitals = new HashSet<Hospital>();
         }
+
+        [Required]
         [ForeignKey("User")]
         public override string Id
         {
@@ -36,6 +39,9 @@ namespace MyMedicalGuide.Data.Models
 
         public string Avatar { get; set; }
 
+        [Required]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string SSN { get; set; }
 
         public virtual ICollection<Report> Reports

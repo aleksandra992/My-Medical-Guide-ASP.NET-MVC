@@ -7,6 +7,7 @@ namespace MyMedicalGuide.Data.Models
 {
     public class Report : BaseModel<int>
     {
+        [Required]
         [ForeignKey("Appointment")]
         public override int Id
         {

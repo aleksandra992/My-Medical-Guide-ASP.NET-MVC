@@ -223,6 +223,7 @@
     <Compile Include="Areas\Admin\Controllers\HospitalsController.cs" />
     <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\Patient\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
     <Compile Include="AssemblyConst.cs" />
     <Compile Include="Controllers\AccountController.cs" />

@@ -185,8 +185,15 @@ namespace MyMedicalGuide.Data.Migrations
                     PhoneNumber = "00359897456123",
                     UserName = "PRusev"
                 };
+                try
+                {
+                    userManager.Create(userDoctor, "PRusev");
+                }
+                catch(DbEntityValidationException ex)
+                {
 
-                userManager.Create(userDoctor, "PRusev");
+                }
+               
 
                 userManager.AddToRole(userDoctor.Id, "Doctor");
                 var doctor = new Doctor() { User = userDoctor, Department = departments[0], CreatedOn = DateTime.Now };

@@ -17,14 +17,14 @@
             this.hospitalsService = hospitals;
         }
 
-        [HttpGet]
-        [OutputCache(Duration = 60)]
-        public ActionResult All()
-        {
-            var departments = this.departmentsService.GetAll();
-            var viewModelDepartments = this.Mapper.Map<IEnumerable<DepartmentViewModel>>(departments);
-            return View(viewModelDepartments);
-        }
+        //[HttpGet]
+        //[OutputCache(Duration = 60)]
+        //public ActionResult All()
+        //{
+        //    var departments = this.departmentsService.GetAll();
+        //    var viewModelDepartments = this.Mapper.Map<IEnumerable<DepartmentViewModel>>(departments);
+        //    return View(viewModelDepartments);
+        //}
 
         [HttpGet]
         public ActionResult Details(int id, string hospitalId)
