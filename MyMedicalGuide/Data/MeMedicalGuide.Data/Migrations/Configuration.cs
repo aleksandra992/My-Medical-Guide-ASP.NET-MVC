@@ -51,6 +51,10 @@ namespace MyMedicalGuide.Data.Migrations
                 var userRole = new IdentityRole { Name = "User" };
                 roleManager.Create(userRole);
 
+
+                var patientRole = new IdentityRole { Name = "Patient" };
+                roleManager.Create(patientRole);
+
                 context.SaveChanges();
             }
         }
@@ -95,6 +99,7 @@ namespace MyMedicalGuide.Data.Migrations
                     UserName = "goran"
                 };
                 userManager.Create(userGoran);
+                userManager.AddToRole(userGoran.Id, "Patient");
 
                 var pacient = new Patient() { User = userGoran, SSN = "1111111111", CreatedOn = DateTime.Now };
 
@@ -184,15 +189,8 @@ namespace MyMedicalGuide.Data.Migrations
                     PhoneNumber = "00359897456123",
                     UserName = "PRusev"
                 };
-                try
-                {
-                    userManager.Create(userDoctor, "PRusev");
-                }
-                catch(DbEntityValidationException ex)
-                {
 
-                }
-               
+                userManager.Create(userDoctor, "PRusev");
 
                 userManager.AddToRole(userDoctor.Id, "Doctor");
                 var doctor = new Doctor() { User = userDoctor, Department = departments[0], CreatedOn = DateTime.Now };

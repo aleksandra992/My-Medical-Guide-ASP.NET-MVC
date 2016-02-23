@@ -5,7 +5,6 @@
     using MyMedicalGuide.Data.Models;
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Validation;
     using System.Linq;
     public class MyMedicalGuideDbContext : IdentityDbContext<User>, IMyMedicalGuideDbContext
     {
@@ -38,15 +37,7 @@
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch(DbEntityValidationException ex)
-            {
-
-            }
-            return 1;
+            return base.SaveChanges();
         }
 
         private void ApplyAuditInfoRules()

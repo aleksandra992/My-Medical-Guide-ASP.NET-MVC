@@ -2,7 +2,7 @@
 {
     using Common.Models;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+
     public class Hospital : BaseModel<int>
     {
         private ICollection<Doctor> doctors;
@@ -20,12 +20,8 @@
             this.departments = new HashSet<Department>();
         }
 
-        [Required]
-        [MaxLength(10)]
         public string Name { get; set; }
 
-        [Required]
-        [MaxLength(30)]
         public string Address { get; set; }
 
         public virtual ICollection<Doctor> Doctors
