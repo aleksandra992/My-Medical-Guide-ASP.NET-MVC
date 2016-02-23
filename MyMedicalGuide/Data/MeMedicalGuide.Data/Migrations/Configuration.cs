@@ -219,7 +219,21 @@ namespace MyMedicalGuide.Data.Migrations
                                             },
                                         new Hospital()
                                             {
-                                                Name = "Sveta Ana",
+                                                Name = "Some Hospital",
+                                                Address = "Bogatisa",
+                                                CreatedOn = DateTime.Now,
+                                                Image="/Content/Hospitals/2.jpg"
+                                            },
+                                         new Hospital()
+                                            {
+                                                Name = "Sveti Lazar",
+                                                Address = "Bogatisa",
+                                                CreatedOn = DateTime.Now,
+                                                Image="/Content/Hospitals/2.jpg"
+                                            },
+                                          new Hospital()
+                                            {
+                                                Name = "Another Hospital",
                                                 Address = "Bogatisa",
                                                 CreatedOn = DateTime.Now,
                                                 Image="/Content/Hospitals/2.jpg"

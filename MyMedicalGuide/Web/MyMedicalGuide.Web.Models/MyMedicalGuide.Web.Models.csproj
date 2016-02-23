@@ -117,6 +117,7 @@
     <Compile Include="Doctors\DoctorBasicViewModel.cs" />
     <Compile Include="Doctors\DoctorGridViewModel.cs" />
     <Compile Include="Doctors\DoctorTableViewModel.cs" />
+    <Compile Include="Home\IndexViewModel.cs" />
     <Compile Include="Hospitals\BasicHospitalViewModel.cs" />
     <Compile Include="Hospitals\HospitalGridViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
