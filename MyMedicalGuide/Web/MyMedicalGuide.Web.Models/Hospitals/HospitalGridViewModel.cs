@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyMedicalGuide.Web.Models.Hospitals
 {
@@ -13,8 +14,10 @@ namespace MyMedicalGuide.Web.Models.Hospitals
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
         public int NumOfPacients { get; set; }
@@ -25,6 +28,7 @@ namespace MyMedicalGuide.Web.Models.Hospitals
 
         public DateTime CreatedOn { get; set; }
 
+        [Required]
         public string Image { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
