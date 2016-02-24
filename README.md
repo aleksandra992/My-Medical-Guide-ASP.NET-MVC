@@ -28,5 +28,11 @@ Can review all their patients and attach documents for them and can accept reque
 - [Kendo UI](http://www.telerik.com/aspnet-mvc)
 
 ## My Medical Guide - User Interface
-<p align="center"><img src="https://raw.githubusercontent.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/tree/master/Images/First.png" /></p>
-https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/tree/master/Images
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/First.png" /></p>
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/Second.png" /></p>
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/Third.png" /></p>
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/Fourth.png" /></p>
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/Fifth.png" /></p>
+<p align="center"><img src="https://github.com/aleksandra992/My-Medical-Guide-ASP.NET-MVC/blob/master/Images/Sixth.png" /></p>
+
+
