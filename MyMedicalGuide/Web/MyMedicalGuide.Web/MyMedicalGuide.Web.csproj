@@ -392,6 +392,7 @@
     <Content Include="Content\Hospitals\Thumbs.db" />
     <Content Include="Content\Departments\Thumbs.db" />
     <Content Include="Areas\Patient\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Patient\Views\Shared\EditorTemplates\AppointmentInputModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -456,6 +457,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Shared\_DepartmentCardPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\patientDocuments\10\" />
@@ -475,7 +477,6 @@
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Patient\Models\" />
-    <Folder Include="Areas\Patient\Views\Shared\" />
     <Folder Include="Content\Documents\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Views\AdminHome\" />

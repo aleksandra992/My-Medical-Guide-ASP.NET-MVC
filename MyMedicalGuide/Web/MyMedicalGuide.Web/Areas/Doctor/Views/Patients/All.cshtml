@@ -1,40 +1,12 @@
 ﻿@model MyMedicalGuide.Web.Models.Patients.PagingPatientViewModel
 
 <div class="row">
-    <br/>
+    <br />
     @using (Html.BeginForm("All", "Patients", FormMethod.Get, new { area = "Doctor" }))
     {
         @Html.Partial("_SearchPartial");
     }
 </div>
-<table class="striped">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>SSN</th>
-            <th>Add Documents</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var patient in Model.Patients)
-        {
-            <tr>
-                <td>@patient.FirstName</td>
-                <td>@patient.LastName</td>
-                <td>@patient.SSN</td>
-                <td>
-
-                    <form action="/Patients/AddDocuments/@patient.Id" method="post" enctype="multipart/form-data">
-                        @Html.AntiForgeryToken()
-                        <input type="file" name="Document" id="document" />
-                        <input type="text" name="DoctorFileName" id="DoctorFileName" placeholder="Document name" />
-                        <input type="submit" value="Upload" />
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@Html.Partial("_PatientsPartial", Model.Patients)
 <br />
 @Html.Partial("_PaginationPartial", Model)

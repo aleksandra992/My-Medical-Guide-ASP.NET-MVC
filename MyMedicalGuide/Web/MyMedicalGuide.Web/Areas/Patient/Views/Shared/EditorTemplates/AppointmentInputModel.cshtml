@@ -1,0 +1,44 @@
+﻿@model MyMedicalGuide.Web.Models.Appointments.AppointmentInputModel
+<div class="row">
+    <div class="col s6 offset-s3">
+        <div class="card-panel z-depth-4">
+            @using (Html.BeginForm("Create", "Appointments", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create new appointment</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-account-circle prefix"></i>
+
+                        @Html.DropDownListFor(x => x.DoctorId, new SelectList(Model.Doctors, "Id", "Name"))
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextBoxFor(x => x.StartDate, new { @class = "datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.EditorFor(x => x.EndDate, new { @class = "datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn waves-effect waves-light red lighten-2" value="Register" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

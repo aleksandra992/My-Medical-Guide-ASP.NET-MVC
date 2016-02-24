@@ -1,5 +1,4 @@
-﻿@model IEnumerable<MyMedicalGuide.Web.Models.Patients.PatientViewModel>
-<table>
+﻿<table>
     <thead>
         <tr>
             <th>First Name</th>
@@ -16,7 +15,7 @@
                 <td>@patient.LastName</td>
                 <td>@patient.SSN</td>
                 <td>
-                   
+
                     <form action="/Patients/AddDocuments/@patient.Id" method="post" enctype="multipart/form-data">
                         @Html.AntiForgeryToken()
                         <input type="file" name="Document" id="document" />
