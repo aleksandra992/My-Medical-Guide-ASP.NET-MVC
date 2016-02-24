@@ -15,6 +15,8 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
     {
         private const string DocumentsPath = "~/App_Data/Uploads/patientDocuments";
 
+        private const int ItemsPerPage = 5;
+
         private readonly IDocumentsService documents;
 
         public ProfileController(IDocumentsService documents)
@@ -23,13 +25,45 @@ namespace MyMedicalGuide.Web.Areas.Patient.Controllers
         }
 
         // GET: Patient/Profile
-        public ActionResult Index()
+        public ActionResult Index(int id = 1)
         {
             var patientId = this.User.Identity.GetUserId();
-            var documentsViewModel = this.documents
+
+            var search = this.Request.QueryString["search"];
+            var page = id;
+            var allItemsCount = this.documents.GetDocumentsByPatientId(patientId)
+                .Count();
+
+            var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var skip = (page - 1) * ItemsPerPage;
+
+            List<DocumentViewModel> documents;
+            if (search != null)
+            {
+                documents = this.documents
                 .GetDocumentsByPatientId(patientId)
-                .To<DocumentViewModel>().ToList();
-            return this.View(documentsViewModel);
+                   .Where(x => x.RealFileName.Contains(search))
+                   .To<DocumentViewModel>()
+                   .ToList();
+            }
+            else
+            {
+                documents = this.documents
+                .GetDocumentsByPatientId(patientId)
+                   .OrderBy(x => x.CreatedOn)
+                   .Skip(skip)
+                   .Take(ItemsPerPage)
+                   .To<DocumentViewModel>()
+                   .ToList();
+            }
+
+            var resultModel = new PageableDocumentsViewModel
+            {
+                CurrentPage = page,
+                TotalPages = totalPages,
+                Documents = documents
+            };
+            return this.View(resultModel);
         }
 
         [HttpGet]

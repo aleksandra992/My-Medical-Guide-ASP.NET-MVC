@@ -120,6 +120,7 @@
     <Compile Include="Doctors\DoctorTableViewModel.cs" />
     <Compile Include="Documents\DocumentViewModel.cs" />
     <Compile Include="Documents\InputDocumentViewModel.cs" />
+    <Compile Include="Documents\PageableDocumentsViewModel.cs" />
     <Compile Include="Home\IndexViewModel.cs" />
     <Compile Include="Hospitals\BasicHospitalViewModel.cs" />
     <Compile Include="Hospitals\HospitalGridViewModel.cs" />

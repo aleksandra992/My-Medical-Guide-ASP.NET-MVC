@@ -1,11 +1,18 @@
-﻿@model IEnumerable<MyMedicalGuide.Web.Models.Documents.DocumentViewModel>
+﻿@model MyMedicalGuide.Web.Models.Documents.PageableDocumentsViewModel
+<div class="text-center">
+    @using (Html.BeginForm("Index", "Profile", FormMethod.Get, new { area = "Patients" }))
+    {
+        @Html.Partial("_SearchPartial", Model)
+    }
+
+</div>
 <ul id="projects-collection" class="collection">
     <li class="collection-item avatar">
         <i class="mdi-file-folder circle light-blue darken-2"></i>
         <span class="collection-header">Documents</span>
         <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
     </li>
-    @foreach (var document in Model)
+    @foreach (var document in Model.Documents)
     {
         <li class="collection-item">
             <div class="row">
@@ -16,10 +23,31 @@
                     <span class="task-cat cyan">@document.DoctorName</span>
                 </div>
                 <div class="col s3">
-                    <span class="task-cat cyan">@document.CreatedOn</span>
+                    <span>@document.CreatedOn</span>
                 </div>
             </div>
         </li>
     }
 
+</ul>
+<ul class="pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <li><a href="/Patient/Profile/Index/@(Model.CurrentPage - 1)">&laquo;</a></li>
+    }
+
+    @for (int i = 1; i < @Model.TotalPages + 1; i++)
+    {
+        var className = string.Empty;
+        if (@Model.CurrentPage == i)
+        {
+            className = "active";
+        }
+        <li class=@className><a href="/Patient/Profile/Index/@i">@i</a></li>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <li><a href="/Patient/Profile/Index/@(Model.CurrentPage + 1)">&raquo;</a></li>
+    }
 </ul>

@@ -42,7 +42,7 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
             var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
             var skip = (page - 1) * ItemsPerPage;
 
-            this.patients.GetAllByDoctorId(doctorId).To<PatientViewModel>().ToList();
+            //this.patients.GetAllByDoctorId(doctorId).To<PatientViewModel>().ToList();
 
             List<PatientViewModel> patients;
             if (search != null)

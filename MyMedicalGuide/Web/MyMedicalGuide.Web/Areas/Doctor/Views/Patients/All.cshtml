@@ -9,4 +9,25 @@
 </div>
 @Html.Partial("_PatientsPartial", Model.Patients)
 <br />
-@Html.Partial("_PaginationPartial", Model)
+<ul class="pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <li><a href="/Doctor/All/Patients/@(Model.CurrentPage - 1)">&laquo;</a></li>
+    }
+
+    @for (int i = 1; i < @Model.TotalPages + 1; i++)
+    {
+        var className = string.Empty;
+        if (@Model.CurrentPage == i)
+        {
+            className = "active";
+        }
+        <li class=@className><a href="/Doctor/All/Patients/@i">@i</a></li>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <li><a href="/Doctor/All/Patients/@(Model.CurrentPage + 1)">&raquo;</a></li>
+    }
+</ul>
+
