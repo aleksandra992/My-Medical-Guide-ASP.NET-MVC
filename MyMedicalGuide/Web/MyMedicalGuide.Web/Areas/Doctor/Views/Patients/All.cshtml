@@ -1,6 +1,7 @@
 ﻿@model MyMedicalGuide.Web.Models.Patients.PagingPatientViewModel
 
 <div class="row">
+    <br/>
     @using (Html.BeginForm("All", "Patients", FormMethod.Get,new { area="Doctor"}))
     {
         <div class="row" id="search-row">
@@ -44,7 +45,7 @@
         }
     </tbody>
 </table>
-
+<br />
 <div class="text-center">
     <ul class="pagination">
         @if (Model.CurrentPage > 1)
