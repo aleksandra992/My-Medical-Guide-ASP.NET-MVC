@@ -17,10 +17,12 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
     public class PatientsController : Controller
     {
         private const string RequestsPath = "~/App_Data/Uploads/";
+        private const int ItemsPerPage = 5;
 
         private readonly IPatientService patients;
 
         private readonly IDocumentsService documents;
+
 
         public PatientsController(IPatientService patients, IDocumentsService documents)
         {
@@ -28,10 +30,50 @@ namespace MyMedicalGuide.Web.Areas.Doctor.Controllers
             this.documents = documents;
         }
 
-        public ActionResult All()
+        public ActionResult All(int id = 1)
         {
+            var doctorId = this.User.Identity.GetUserId();
 
-            return this.View();
+            var search = this.Request.QueryString["search"];
+            var page = id;
+            var allItemsCount = this.patients.GetAllByDoctorId(doctorId)
+                .Count();
+
+            var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var skip = (page - 1) * ItemsPerPage;
+
+            this.patients.GetAllByDoctorId(doctorId).To<PatientViewModel>().ToList();
+
+            List<PatientViewModel> patients;
+            if (search != null)
+            {
+
+                patients = this.patients
+                  .GetAllByDoctorId(doctorId)
+                   .Where(x => x.SSN.Contains(search))
+                   .To<PatientViewModel>()
+                   .ToList();
+            }
+            else
+            {
+                patients = this.patients
+                   .GetAllByDoctorId(doctorId)
+                   .OrderBy(x => x.Id)
+                   .Skip(skip)
+                   .Take(ItemsPerPage)
+                   .To<PatientViewModel>()
+                   .ToList();
+            }
+
+            var resultModel = new PagingPatientViewModel
+            {
+                CurrentPage = page,
+                TotalPages = totalPages,
+                Patients = patients
+            };
+
+
+            return this.View(resultModel);
         }
 
         [ChildActionOnly]

@@ -1,1 +1,70 @@
-﻿@Html.Action("PatientsPartial", "Patients", new { area = "Doctor" })
+﻿@model MyMedicalGuide.Web.Models.Patients.PagingPatientViewModel
+
+<div class="row">
+    @using (Html.BeginForm("All", "Patients", FormMethod.Get,new { area="Doctor"}))
+    {
+        <div class="row" id="search-row">
+            <div class="input-field col offset-s3 s4">
+                <i class="mdi-action-search prefix"></i>
+                <input type="text" name="search" id="searchInput" />
+                <label>Search</label>
+            </div>
+            <div class="col s2">
+                <button id="btnSearch" class="btn btn-search red lighten-2">Search</button>
+            </div>
+        </div>
+    }
+</div>
+<table class="striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>SSN</th>
+            <th>Add Documents</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model.Patients)
+        {
+            <tr>
+                <td>@patient.FirstName</td>
+                <td>@patient.LastName</td>
+                <td>@patient.SSN</td>
+                <td>
+
+                    <form action="/Patients/AddDocuments/@patient.Id" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <input type="file" name="Document" id="document" />
+                        <input type="text" name="DoctorFileName" id="DoctorFileName" placeholder="Document name" />
+                        <input type="submit" value="Upload" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li><a href="/Doctor/Patients/All/@(Model.CurrentPage - 1)">&laquo;</a></li>
+        }
+
+        @for (int i = 1; i < @Model.TotalPages + 1; i++)
+        {
+            var className = string.Empty;
+            if (@Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class=@className><a href="/Doctor/Patients/All/@i">@i</a></li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li><a href="/Doctor/Patients/All/@(Model.CurrentPage + 1)">&raquo;</a></li>
+        }
+    </ul>
+</div>

@@ -479,6 +479,7 @@
     <Folder Include="Views\AdminHome\" />
     <Folder Include="Views\AutoComplete\" />
     <Folder Include="Views\Doctors\" />
+    <Folder Include="Views\PatientsGrid\" />
     <Folder Include="Views\Requests\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>

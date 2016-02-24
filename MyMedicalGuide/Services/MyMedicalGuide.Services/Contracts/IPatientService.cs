@@ -10,5 +10,7 @@ namespace MyMedicalGuide.Services.Contracts
         Patient GetById(string id);
 
         IQueryable<Patient> GetAllByDoctorId(string doctorId);
+
+        IQueryable<Patient> All();
     }
 }

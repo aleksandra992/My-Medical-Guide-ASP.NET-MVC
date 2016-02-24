@@ -22,6 +22,11 @@ namespace MyMedicalGuide.Services
             return patient.Id;
         }
 
+        public IQueryable<Patient> All()
+        {
+            return this.patients.All();
+        }
+
         public IQueryable<Patient> GetAllByDoctorId(string doctorId)
         {
             return this.patients.All().Where(x => x.Doctors.Any(y => y.Id == doctorId));
