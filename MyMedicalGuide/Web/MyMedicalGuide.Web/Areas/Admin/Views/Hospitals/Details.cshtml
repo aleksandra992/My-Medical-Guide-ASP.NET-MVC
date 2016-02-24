@@ -34,16 +34,18 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/kendo")
-    <script>
-        $(document).ready(function () {
-            $('select').material_select();
+    @Scripts.Render("~/bundles/home");
 
-        })
+    @*<script>
+            $(document).ready(function () {
+                $('select').material_select();
 
-    </script>
+            })
 
-
+        </script>*@
 }
+
+
 @section KendoStyles{
     @Styles.Render("~/Content/kendo")
 }

@@ -26,10 +26,12 @@
           .Destroy(destroy => destroy.Action("PatientRequests_Destroy", "Requests"))
       )
 )
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+@section Kendo{
     @Scripts.Render("~/bundles/kendo")
-
 }
 @section KendoStyles{
     @Styles.Render("~/Content/kendo")
