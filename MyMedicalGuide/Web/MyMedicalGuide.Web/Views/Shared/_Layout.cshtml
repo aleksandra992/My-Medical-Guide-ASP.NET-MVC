@@ -39,8 +39,6 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
                     @if (User.IsInRole("Patient"))
                     {
@@ -92,8 +90,6 @@
                 }
 
                 <ul class="side-nav" id="mobile-demo">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Hospitals", "All", "Hospitals", new { area = "" }, null)</li>
                     @if (Request.IsAuthenticated)

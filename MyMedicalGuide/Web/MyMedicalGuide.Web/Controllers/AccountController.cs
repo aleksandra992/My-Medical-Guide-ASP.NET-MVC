@@ -161,6 +161,8 @@ namespace MyMedicalGuide.Web.Controllers
                     UserName = model.Username,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
 
                 };
 

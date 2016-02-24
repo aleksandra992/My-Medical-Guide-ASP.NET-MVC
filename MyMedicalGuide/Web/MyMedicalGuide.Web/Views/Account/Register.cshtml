@@ -12,6 +12,28 @@
                 <h4>Create a new account.</h4>
                 <hr />
                 @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="row">
+                    <div class="input-field col s12">
+
+                        <i class="mdi-action-account-circle prefix"></i>
+                        @Html.TextBoxFor(m => m.FirstName)
+
+                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+
+                        <i class="mdi-action-account-circle prefix"></i>
+                        @Html.TextBoxFor(m => m.LastName)
+
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="input-field col s12">
 
