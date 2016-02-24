@@ -1,0 +1,33 @@
+﻿@model MyMedicalGuide.Web.Models.Patients.PatientRequestInputModel
+
+    @using (Html.BeginForm("Add", "Doctors", new { area = "Patient" }, FormMethod.Post, new { @class = "col s12", role = "form" }))
+            {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="mdi-action-account-circle prefix active"></i>
+                <input id="DoctorName" type="text" class="validate valid">
+                <input name="DoctorId" type="hidden" />
+                <label for="DoctorName" class="active">Name</label>
+            </div>
+        </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-question-answer prefix"></i>
+                        @Html.TextAreaFor(m => m.Message, new { @class = "materialize-textarea validate", length = "300", @id = "message4" })
+                        @Html.LabelFor(m => m.Message)
+                        @Html.ValidationMessageFor(m => m.Message, "", new { @class = "red" })
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn red waves-effect waves-light lighten-2" type="submit" name="action">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    }
+
+

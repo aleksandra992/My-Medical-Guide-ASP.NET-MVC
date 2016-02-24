@@ -10,7 +10,7 @@ namespace MyMedicalGuide.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        [OutputCache(Duration = 60 * 60)]
+        
         public ActionResult Index()
         {
             return View();

@@ -18,5 +18,11 @@ namespace MyMedicalGuide.Web.Controllers
             this.Response.StatusCode = 404;
             return this.View();
         }
+
+        public ViewResult ServerError()
+        {
+            this.Response.StatusCode = 500;
+            return this.View();
+        }
     }
 }
