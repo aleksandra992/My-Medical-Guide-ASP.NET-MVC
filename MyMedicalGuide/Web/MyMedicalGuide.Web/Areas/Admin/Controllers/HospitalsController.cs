@@ -40,9 +40,9 @@ namespace MyMedicalGuide.Web.Areas.Admin.Controllers
             this.departments = departments;
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            var departmentsDb = this.departments.GetAll();
+            var departmentsDb = this.departments.GetAll().Where(x => x.Hospitals.Any(y => y.Id == id));
             var outputDepartments = this.Mapper.Map<IEnumerable<DepartmentNameViewModel>>(departmentsDb);
             this.ViewBag.HospitalId = id;
             this.ViewBag.Departments = outputDepartments;

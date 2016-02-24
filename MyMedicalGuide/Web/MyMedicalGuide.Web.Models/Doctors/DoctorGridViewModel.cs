@@ -45,7 +45,6 @@ namespace MyMedicalGuide.Web.Models.Doctors
 
         public string Id { get; set; }
 
-        [Required]
         public string DepartmentName { get; set; }
 
         public DateTime CreatedOn { get; set; }
