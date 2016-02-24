@@ -10,7 +10,7 @@
   .Title("Manage");
           columns.Bound(c => c.Name);
           columns.Bound(c => c.Address);
-          columns.Bound(c => c.CreatedOn);
+          columns.Bound(c => c.CreatedOn).Template(@<text></text>).ClientTemplate("#=kendo.toString(CreatedOn,'yyyy-MM-dd')#");
           columns.Bound(c => c.NumOfDepartments);
           columns.Bound(c => c.NumOfDoctors);
           columns.Bound(c => c.NumOfPacients);

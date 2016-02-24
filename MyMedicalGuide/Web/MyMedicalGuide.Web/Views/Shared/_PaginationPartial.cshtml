@@ -1,0 +1,23 @@
+﻿<div class="text-center">
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li><a href="/Hospitals/All/@(Model.CurrentPage - 1)">&laquo;</a></li>
+        }
+
+        @for (int i = 1; i < @Model.TotalPages + 1; i++)
+        {
+            var className = string.Empty;
+            if (@Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class=@className><a href="/Hospitals/All/@i">@i</a></li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li><a href="/Hospitals/All/@(Model.CurrentPage + 1)">&raquo;</a></li>
+        }
+    </ul>
+</div>

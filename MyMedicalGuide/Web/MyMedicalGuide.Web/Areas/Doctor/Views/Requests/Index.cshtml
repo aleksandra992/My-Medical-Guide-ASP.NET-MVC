@@ -6,6 +6,7 @@
           columns.Bound(c => c.FirstName);
           columns.Bound(c => c.LastName);
           columns.Bound(c => c.Message);
+          columns.Bound(c => c.CreatedOn).Template(@<text></text>).ClientTemplate("#=kendo.toString(CreatedOn,'yyyy-MM-dd')#"); ;
           columns.Bound(c => c.IsApproved);
 
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);

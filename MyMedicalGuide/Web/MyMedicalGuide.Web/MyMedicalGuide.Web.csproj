@@ -454,6 +454,8 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\_PatientsPartial.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Shared\_PaginationPartial.cshtml" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\patientDocuments\10\" />

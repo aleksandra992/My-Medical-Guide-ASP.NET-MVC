@@ -2,18 +2,9 @@
 
 <div class="row">
     <br/>
-    @using (Html.BeginForm("All", "Patients", FormMethod.Get,new { area="Doctor"}))
+    @using (Html.BeginForm("All", "Patients", FormMethod.Get, new { area = "Doctor" }))
     {
-        <div class="row" id="search-row">
-            <div class="input-field col offset-s3 s4">
-                <i class="mdi-action-search prefix"></i>
-                <input type="text" name="search" id="searchInput" />
-                <label>Search</label>
-            </div>
-            <div class="col s2">
-                <button id="btnSearch" class="btn btn-search red lighten-2">Search</button>
-            </div>
-        </div>
+        @Html.Partial("_SearchPartial");
     }
 </div>
 <table class="striped">
@@ -46,26 +37,4 @@
     </tbody>
 </table>
 <br />
-<div class="text-center">
-    <ul class="pagination">
-        @if (Model.CurrentPage > 1)
-        {
-            <li><a href="/Doctor/Patients/All/@(Model.CurrentPage - 1)">&laquo;</a></li>
-        }
-
-        @for (int i = 1; i < @Model.TotalPages + 1; i++)
-        {
-            var className = string.Empty;
-            if (@Model.CurrentPage == i)
-            {
-                className = "active";
-            }
-            <li class=@className><a href="/Doctor/Patients/All/@i">@i</a></li>
-        }
-
-        @if (Model.CurrentPage < Model.TotalPages)
-        {
-            <li><a href="/Doctor/Patients/All/@(Model.CurrentPage + 1)">&raquo;</a></li>
-        }
-    </ul>
-</div>
+@Html.Partial("_PaginationPartial", Model)
