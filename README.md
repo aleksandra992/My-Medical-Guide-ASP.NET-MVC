@@ -29,10 +29,4 @@ Can review all their patients and attach documents for them and can accept reque
 
 ## My Medical Guide - User Interface
 <p align="center"><img src="https://raw.githubusercontent.com/Aleksandra992/MyMedical-Guide/master/Images/First.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture2.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture3.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture4.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture5.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture6.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture7.PNG" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture8.PNG" /></p>
+
